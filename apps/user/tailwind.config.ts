@@ -38,6 +38,12 @@ const config: Config = {
             "blue-b": "#1da09c",
             "dark-blue-b": "#17807d",
 	    },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        TypoRound: ['var(--font-TypoRound)'],
+        NimbusSans: ['var(--font-NimbusSans)'],
+      },
     },
   },
   plugins: [],
