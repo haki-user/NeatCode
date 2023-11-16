@@ -6,11 +6,21 @@ export default function Home() {
   return (
     <div
       className="landing-bg w-full h-full"
+    >
+    <div className="header w-full h-[760px] top-[-80px] relative">
+    <div className="header-background absolute w-full h-full" 
       style={{
         background:
           "linear-gradient(-150deg, #222222 15%, #373737 70%, #3c4859 94%)",
-      }}
+        transform: "skewY(12deg)",
+        transformOrigin: "100%"
+      }} 
     >
+
+    </div>
+    <div className="background-reverse top-0 absolute w-full h-full bg-white z-[-1]" 
+      style={{ transform: "skewY(-12deg)", transformOrigin: 0 }} ></div>
+    <div className="header-content w-full h-full absolute top-[80px]">
       <Navbar />
         <div className="intro-container flex px-[50px] m-auto">
           <div className="intro-row flex p-[-15px]">
@@ -105,7 +115,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="w-[550px] h-[306px] flex flex-col items-center justify-center m-24">
+            <div className="w-[50%] h-[100%] flex flex-col items-center justify-center m-24">
               <h1 className="text-white text-4xl font-medium">
                 A New Way to Learn
               </h1>
@@ -118,6 +128,8 @@ export default function Home() {
               </button>
             </div>
         </div>
+      </div>
+      </div>
       </div>
     </div>
   );
