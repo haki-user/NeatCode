@@ -16,21 +16,24 @@ export default function Home() {
         transformOrigin: "100%"
       }} 
     >
-
+      <div className="w-1/3 h-48 absolute top-96 left-[-16.666%]" style={{ backgroundColor: "#383d44" }}></div>
+      <div className="w-1/3 h-48 absolute top-0 right-[16.666%]" style={{ backgroundColor: "#2e2e2e" }}></div>
+      <div className="w-1/3 h-48 absolute right-0 bottom-0" style={{ backgroundColor: "#2e2e2e" }}></div>
     </div>
     <div className="background-reverse top-0 absolute w-full h-full bg-white z-[-1]" 
       style={{ transform: "skewY(-12deg)", transformOrigin: 0 }} ></div>
     <div className="header-content w-full h-full absolute top-[80px]">
       <Navbar />
-        <div className="intro-container flex px-[50px] m-auto">
+        <div className="intro-container relative w-[1170px] px-[50px] m-auto">
           <div className="intro-row flex p-[-15px]">
             <div className="w-1/2">
               <div className="ipad-container mt-[100px]">
                 <div
-                  className="ipad w-[414px] h-[284px] bg-white rounded-3xl rotate-[-8deg] origin-center transition-all duration-400"
+                  className="ipad w-[414px] h-[284px] bg-white rounded-[30px] rotate-[-8deg] transition-all duration-400"
                   style={{
                     boxShadow:
                       "inset 0 4px 7px 1px #ffffff, inset 0 -5px 20px rgba(173, 186, 204, 0.25), 0 2px 6px rgba(0, 21, 64, 0.14), 0 10px 20px rgba(0, 21, 64, 0.05)",
+                      transformOrigin: "50% 50%",
                   }}
                 >
                   <div
@@ -51,7 +54,7 @@ export default function Home() {
                           style={{ backgroundColor: "#f0f4fa" }}
                         >
                           <div
-                            className="ipad-app h-[55px] rounded-[5px] m-[5px]"
+                            className="ipad-app h-[65px] rounded-[5px] m-[5px] p-[5px]"
                             style={{
                               width: "calc(100% / 4)",
                               background: "linear-gradient(#96d1f9, #00cded)",
