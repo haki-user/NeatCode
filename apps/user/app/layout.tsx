@@ -1,7 +1,7 @@
-import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import localFont from 'next/font/local'
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import localFont from "next/font/local";
 
 const TypoRound = localFont({
   src: "../public/fonts/TypoRound/Typo_Round_Regular_Demo.otf",
@@ -10,33 +10,37 @@ const TypoRound = localFont({
 
 const NimbusSans = localFont({
   src: "../public/fonts/Nimbus Sans/NimbusSanL-Reg.otf",
-  style: "normal", 
+  style: "normal",
   variable: "--font-NimbusSans",
 });
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'NeatCode',
-  description: 'Programming Practice Platform',
+  title: "NeatCode",
+  description: "Programming Practice Platform",
   icons: {
-        icon: '/favicon.png',
-    }
-}
+    icon: "/favicon.png",
+  },
+};
 
 export const viewport: Viewport = {
-    width: 'device-width',
-    initialScale: 1,
-}
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={`${NimbusSans.variable} ${TypoRound.variable} ${inter.className}`}>{children}</body>
+      <body
+        className={`${NimbusSans.variable} ${TypoRound.variable} ${inter.className}`}
+      >
+        {children}
+      </body>
     </html>
-  )
+  );
 }
