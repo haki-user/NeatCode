@@ -31,7 +31,6 @@ type NavbarItemProps = {
     isOrange?: boolean;
 };
 const NavbarItem: React.FC<NavbarItemProps> = ({ text, href, isOrange }) => {
-    console.log(text, isOrange, `text-${isOrange?"brand-orange":"white"}`);
     return (
     <div className="mr-7">
         <Link href={href}  

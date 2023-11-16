@@ -5,14 +5,13 @@ import "./globals.css";
 export default function Home() {
   return (
     <div
-      className="landing-bg bg-gradient-to-r from-blue-600 via-blue-600 to-indigo-800 w-full h-full"
+      className="landing-bg w-full h-full"
       style={{
         background:
           "linear-gradient(-150deg, #222222 15%, #373737 70%, #3c4859 94%)",
       }}
     >
       <Navbar />
-      <div className="flex">
         <div className="intro-container flex px-[50px] m-auto">
           <div className="intro-row flex p-[-15px]">
             <div className="w-1/2">
@@ -90,6 +89,16 @@ export default function Home() {
                             <PieChart />
                           </div>
                         </div>
+                        <div className="ipad-panel-list w-full h-full p-[10px]">
+                          <div className="ipad-panel-list-item w-full h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                          <div className="ipad-panel-list-item w-[60%] h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                          <div className="ipad-panel-list-item w-[70%] h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                          <div className="ipad-panel-list-item w-[30%] h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                          <br />
+                          <div className="ipad-panel-list-item w-[80%] h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                          <div className="ipad-panel-list-item w-[70%] h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                          <div className="ipad-panel-list-item w-[30%] h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }} />
+                         </div>
                       </div>
                     </div>
                   </div>
@@ -108,7 +117,6 @@ export default function Home() {
                 Create Account {">"}
               </button>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -118,7 +126,7 @@ export default function Home() {
 const ListItem:React.FC<{ fill:number, color: string, rest?:string }> = ({fill, color, rest}) => {
   return (
     <div className={"ipad-list bg-white p-[10px] border-solid border-[1px] flex justify-between "+rest} style={{ height: "calc(100% / 6)", borderColor: "#edf1f7" }}>
-      <div className="h-full" style={{ width: fill+"%", backgroundColor: "#e3e7ed" }}></div>
+      <div className="h-[5px] rounded-[5px]" style={{ width: fill+"%", backgroundColor: "#e3e7ed" }}></div>
       <div className="w-[10px] h-[5px] rounded-[5px]" style={{ backgroundColor: color }}></div> 
     </div>)
 };
@@ -137,3 +145,9 @@ const PieChart:React.FC = () => {
     </div>
   )
 }
+
+const ListPanel:React.FC<{ fill:number }> = ({fill}) => {
+  return (
+    <div className="ipad-panel-list-item w-full h-[5px] mb-2 rounded-[5px]" style={{ backgroundColor: "#e3e7ed" }}></div>
+  )
+};
