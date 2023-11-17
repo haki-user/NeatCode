@@ -1,0 +1,19 @@
+@keyframes rotate-pie {
+  0% {
+    transform: rotate(-50deg);
+  }
+  25% {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(-50deg);
+  }
+  100% {
+    transform: rotate(-50deg);
+  }
+}
+
+.pie-section {
+  animation: rotate-pie 8s infinite ease;
+  transition-timing-function: ease-in;
+}
