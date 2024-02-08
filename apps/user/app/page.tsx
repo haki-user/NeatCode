@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "../components/navbar";
 import Ipad from "../components/ipad";
+import Body from "./body";
 import "./page.css";
 import "./globals.css";
 
@@ -60,7 +61,7 @@ export default function Home(): JSX.Element {
                     opacity-50 mt-[33px] text-center leading-[1.9em] 
                     tracking-[0.03em] ml-[14px] mr-[-1px] mb-auto"
                 >
-                  LeetCode is the best platform to help you enhance your skills,
+                  NeatCode is the best platform to help you enhance your skills,
                   expand your knowledge and prepare for technical interviews.
                 </p>
                 <Link
@@ -89,6 +90,9 @@ export default function Home(): JSX.Element {
             </div>
           </div>
         </div>
+      </div>
+      <div className="body-container relative mt-[-220px]">
+        <Body />
       </div>
     </div>
   );
