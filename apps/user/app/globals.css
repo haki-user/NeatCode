@@ -19,3 +19,7 @@ body {
   min-height: 100%;
   margin: 0;
 }
+
+.rotY {
+  transform: perspective(600px) rotateY(-10deg);
+}
