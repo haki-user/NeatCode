@@ -1,5 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGraduationCap, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGraduationCap,
+  faPlay,
+  faTrophy,
+  faUsers,
+  faBriefcase,
+  faBuilding,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 // import { ExploreCard } from "@neatcode/ui";
 
 export default function Body(): JSX.Element {
@@ -13,9 +22,9 @@ export default function Body(): JSX.Element {
               <h2 className="text-2xl mr-6 font-medium">Start Exploring</h2>
               <div className="w-16 h-16">
                 <div className="relative w-[38px] h-full mx-auto">
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[10px] text-[#34a297]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[10px] text-[#34a297] rotate-[60deg]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[10px] text-[#34a297] -rotate-[60deg]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] rotate-[60deg]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] -rotate-[60deg]" />
                   <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[6px] pt-[5px] ">
                     <FontAwesomeIcon
                       color="#34a297"
@@ -54,7 +63,59 @@ export default function Body(): JSX.Element {
         </div>
         {/* </div> */}
       </div>
-      <div className="product-section-container">product</div>
+      <div className="feature-section-container w-[73.125rem] h-80 mx-auto px-1 flex">
+        <div className="w-1/2 h-full border-2 border-red-600 px-12">
+          <div className="relative w-full h-[5.785rem] flex items-center">
+            <div className="absolute left-20">
+              <CustomIcons icon={faTrophy} v="v4" />
+            </div>
+            <div className="absolute left-10">
+              <CustomIcons icon={faUsers} v="v3" />
+            </div>
+            <div className="absolute">
+              <div className="w-16 h-16">
+                <div className="relative w-[38px] h-full mx-auto">
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.625rem]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.625rem] rotate-[60deg]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.625rem] -rotate-[60deg]" />
+                  <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[0.1rem] pt-[5px] ">
+                    <b className="text-[#259af3] font-TypoRound text-sm text-center">
+                      3200
+                    </b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.25rem] text-[#1890ff] font-medium">
+              Questions, Community & Contests
+            </h2>
+            <p className="text-sm font-NimbusSans leading-[1.9rem] tracking-wider opacity-[0.65] font-normal">
+              Over 3200 questions for you to practice. Come and join one of the
+              largest tech communities with hundreds of thousands of active
+              users and participate in our contests to challenge yourself and
+              earn rewards.
+            </p>
+          </div>
+          <div className="w-full text-[#1890ff] mt-4">
+            <p className="flex items-center gap-0">
+              <span>View Questions &nbsp;</span>
+              <FontAwesomeIcon icon={faChevronRight} width={5} />
+            </p>
+          </div>
+        </div>
+        <div className="w-1/2 border-2 border-blue-600">
+          <div className="relative">
+            <div className="absolute ml-10">
+              <CustomIcons icon={faBuilding} v="v6" />
+            </div>
+            <div className="absolute">
+              <CustomIcons icon={faBriefcase} v="v5" />
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="developer-section-container">developer</div>
       <div className="story-section-container">story</div>
     </div>
@@ -115,6 +176,56 @@ export function ExploreCard({
               <FontAwesomeIcon color="#e6eaef" icon={faPlay} size="xl" />
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CustomIcons({
+  v,
+  icon = faGraduationCap,
+}: {
+  v: "v1" | "v2" | "v3" | "v4" | "v5" | "v6" | "v7";
+  icon: IconDefinition;
+}): JSX.Element {
+  const bg = {
+    v1: "from-[#4db6ac] to-[#00796b] ",
+    v2: "from-[#2196f3] to-[#4fc3f7] ",
+    v3: "from-[#cddc39] to-[#8bc34a] ",
+    v4: "from-[#ffeb3b] to-[#fbc02d] ",
+    v5: "from-[#e6ce6a] to-[#b7892b] ",
+    v6: "from-[#e0e0e0] to-[#bdbdbd] ",
+    v7: "from-[#f4511e] to-[#b71c1c] ",
+  };
+  const colors = {
+    v1: "#34a297",
+    v2: "#259af3",
+    v3: "#7cb342",
+    v4: "#ffb300",
+    v5: "#b7892b",
+    v6: "#9e9e9e",
+    v7: "#34a297",
+  };
+  return (
+    <div className="w-16 h-16">
+      <div className="relative w-[38px] h-full mx-auto">
+        <div
+          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.625rem]`}
+        />
+        <div
+          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.625rem] rotate-[60deg]`}
+        />
+        <div
+          className={`"absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.625rem] -rotate-[60deg]`}
+        />
+        <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[6px] pt-[5px] ">
+          <FontAwesomeIcon
+            color={colors[v]}
+            height={18}
+            icon={icon}
+            width={24}
+          />
         </div>
       </div>
     </div>
