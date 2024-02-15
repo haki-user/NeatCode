@@ -32,7 +32,7 @@ export default function Home(): JSX.Element {
           />
         </div>
         <div
-          className="background-reverse top-0 absolute w-full h-full 
+          className="background-reverse top-96 absolute w-full h-full 
             bg-white z-[-1]"
           style={{ transform: "skewY(-12deg)", transformOrigin: 0 }}
         />
