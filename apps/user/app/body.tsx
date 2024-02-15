@@ -75,9 +75,9 @@ export default function Body(): JSX.Element {
             <div className="absolute">
               <div className="w-16 h-16">
                 <div className="relative w-[38px] h-full mx-auto">
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.625rem]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.625rem] rotate-[60deg]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.625rem] -rotate-[60deg]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.5rem]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.5rem] rotate-[60deg]" />
+                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.5rem] -rotate-[60deg]" />
                   <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[0.1rem] pt-[5px] ">
                     <b className="text-[#259af3] font-TypoRound text-sm text-center">
                       3200
@@ -91,7 +91,7 @@ export default function Body(): JSX.Element {
             <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.25rem] text-[#1890ff] font-medium">
               Questions, Community & Contests
             </h2>
-            <p className="text-sm font-NimbusSans leading-[1.9rem] tracking-wider opacity-[0.65] font-normal">
+            <p className="text-[0.938rem] font-NimbusSans leading-[1.9rem] tracking-wider opacity-50 font-normal">
               Over 3200 questions for you to practice. Come and join one of the
               largest tech communities with hundreds of thousands of active
               users and participate in our contests to challenge yourself and
@@ -211,13 +211,13 @@ function CustomIcons({
     <div className="w-16 h-16">
       <div className="relative w-[38px] h-full mx-auto">
         <div
-          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.625rem]`}
+          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.5rem]`}
         />
         <div
-          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.625rem] rotate-[60deg]`}
+          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.5rem] rotate-[60deg]`}
         />
         <div
-          className={`"absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.625rem] -rotate-[60deg]`}
+          className={`"absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.5rem] -rotate-[60deg]`}
         />
         <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[6px] pt-[5px] ">
           <FontAwesomeIcon
