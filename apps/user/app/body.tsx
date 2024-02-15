@@ -19,7 +19,7 @@ export default function Body(): JSX.Element {
         <div className="explore-section-content flex w-full px-[140px]">
           <div className="w-[596px] h-full flex flex-col items-end pr-8">
             <div className="w-full h-24 flex justify-end items-center text-[#1da09c]">
-              <h2 className="text-2xl mr-6 font-medium">Start Exploring</h2>
+              <h2 className="text-2xl mr-6 font-normal">Start Exploring</h2>
               <div className="w-16 h-16">
                 <div className="relative w-[38px] h-full mx-auto">
                   <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297]" />
@@ -36,13 +36,16 @@ export default function Body(): JSX.Element {
                 </div>
               </div>
             </div>
-            <p className="w-full text-right font-normal opacity-50 leading-7 pr-9">
+            <p className="w-full text-right text-[0.9375rem] font-normal opacity-50 leading-7 pr-9">
               Explore is a well-organized tool that helps you get the most out
               of NeatCode by providing structure to guide your progress towards
               the next step in your programming career.
             </p>
-            <div className="w-full h-10 text-right text-[#1890ff] pr-9 pt-4">
-              <p className="text-sm">Get Started {`>`}</p>
+            <div className="w-full h-10 ">
+              <p className="text-[0.9375rem] font-normal text-[#1890ff] pr-9 pt-4 flex justify-end items-center">
+                <span className="text-sm">Get Started &nbsp;</span>
+                <FontAwesomeIcon icon={faChevronRight} width={5} />
+              </p>
             </div>
           </div>
           <div className="relative explore-cards-container w-1/2 h-full transition-all delay-[400ms]">
@@ -64,7 +67,7 @@ export default function Body(): JSX.Element {
         {/* </div> */}
       </div>
       <div className="feature-section-container w-[73.125rem] h-80 mx-auto px-1 flex">
-        <div className="w-1/2 h-full border-2 border-red-600 px-12">
+        <div className="w-1/2 h-full border-r-2 border-r-white px-12">
           <div className="relative w-full h-[5.785rem] flex items-center">
             <div className="absolute left-20">
               <CustomIcons icon={faTrophy} v="v4" />
@@ -88,10 +91,10 @@ export default function Body(): JSX.Element {
             </div>
           </div>
           <div>
-            <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.25rem] text-[#1890ff] font-medium">
+            <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#1890ff] font-medium">
               Questions, Community & Contests
             </h2>
-            <p className="text-[0.938rem] font-NimbusSans leading-[1.9rem] tracking-wider opacity-50 font-normal">
+            <p className="text-[0.9375rem] leading-[1.9rem] tracking-normal opacity-30 font-normal">
               Over 3200 questions for you to practice. Come and join one of the
               largest tech communities with hundreds of thousands of active
               users and participate in our contests to challenge yourself and
@@ -99,20 +102,37 @@ export default function Body(): JSX.Element {
             </p>
           </div>
           <div className="w-full text-[#1890ff] mt-4">
-            <p className="flex items-center gap-0">
+            <p className="flex items-center text-[0.9375rem] font-normal">
               <span>View Questions &nbsp;</span>
               <FontAwesomeIcon icon={faChevronRight} width={5} />
             </p>
           </div>
         </div>
-        <div className="w-1/2 border-2 border-blue-600">
-          <div className="relative">
+        <div className="w-1/2 h-full px-12">
+          <div className="relative w-full h-[5.785rem] flex items-center">
             <div className="absolute ml-10">
               <CustomIcons icon={faBuilding} v="v6" />
             </div>
             <div className="absolute">
               <CustomIcons icon={faBriefcase} v="v5" />
             </div>
+          </div>
+          <div>
+            <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#b7892b] font-medium">
+              Companies & Candidates
+            </h2>
+            <p className="text-[0.9375rem] leading-[1.9rem] tracking-normal opacity-30 font-normal">
+              Not only does LeetCode prepare candidates for technical
+              interviews, we also help companies identify top technical talent.
+              From sponsoring contests to providing online assessments and
+              training, we offer numerous services to businesses.
+            </p>
+          </div>
+          <div className="w-full text-[#1890ff] mt-4">
+            <p className="flex text-[0.9375rem] items-center font-normal">
+              <span>Business Opportunities &nbsp;</span>
+              <FontAwesomeIcon icon={faChevronRight} width={5} />
+            </p>
           </div>
         </div>
       </div>
