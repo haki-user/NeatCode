@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "../components/navbar";
 import Ipad from "../components/ipad";
 import Body from "./body";
@@ -36,6 +37,18 @@ export default function Home(): JSX.Element {
             bg-white z-[-1]"
           style={{ transform: "skewY(-12deg)", transformOrigin: 0 }}
         />
+        <div className="absolute top-[62.5rem] right-[22%] rotate-[10deg] opacity-70 grayscale brightness-0 invert">
+          <Image alt="java icon" height={150} src="java.svg" width={110} />
+        </div>
+        <div className="absolute top-[85rem] left-[22%] -rotate-[10deg] opacity-70 grayscale brightness-0 invert">
+          <Image alt="kotlin icon" height={150} src="swift.svg" width={110} />
+        </div>
+        <div className="absolute top-[103.125rem] right-[37%] -rotate-[5deg] opacity-70 grayscale brightness-0 invert">
+          <Image alt="kotlin icon" height={80} src="kotlin.svg" width={80} />
+        </div>
+        <div className="absolute top-[131.438rem] left-[27%] rotate-[20deg] opacity-70 grayscale brightness-0 invert">
+          <Image alt="kotlin icon" height={100} src="python.svg" width={100} />
+        </div>
         <div
           className="header-content w-full h-full absolute 
             top-[80px]"
