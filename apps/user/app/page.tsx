@@ -8,7 +8,7 @@ import "./globals.css";
 
 export default function Home(): JSX.Element {
   return (
-    <div className="landing-bg w-full h-full">
+    <div className="landing-bg w-full h-full font-NimbusSans">
       <div className="header w-full h-[760px] top-[-80px] relative">
         <div
           className="header-background absolute w-full h-full"
