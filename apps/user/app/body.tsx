@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
@@ -7,6 +9,7 @@ import {
   faBriefcase,
   faBuilding,
   faChevronRight,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 // import { ExploreCard } from "@neatcode/ui";
@@ -136,8 +139,12 @@ export default function Body(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className="developer-section-container">developer</div>
-      <div className="story-section-container">story</div>
+      <div className="developer-section-container lg:w-[73.125rem] border-[1px] border-blue-600 mx-auto px-2.5">
+        <DeveloperSection />
+      </div>
+      <div className="story-section-container">
+        <StorySection />
+      </div>
     </div>
   );
 }
@@ -250,4 +257,72 @@ function CustomIcons({
       </div>
     </div>
   );
+}
+
+function DeveloperSection(): JSX.Element {
+  const listData = [
+    { id: 1, name: "Linked List" },
+    { id: 2, name: "Binary Tree" },
+    { id: 3, name: "Fibonacci" },
+  ];
+  const [activeId, setActiveId] = useState<number>(1);
+  return (
+    <div className="border-[1px] border-green-600 w-[83.3333%] mx-auto mt-[3.125rem] pt-3">
+      <div className="w-full flex flex-col items-center">
+        <CustomIcons icon={faCode} v="v1" />
+        <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#1da09c] font-medium">
+          Developer
+        </h2>
+        <p className="text-center text-[0.9375rem] leading-[1.9rem] tracking-normal opacity-30 font-normal max-w-[37.5rem] m-auto">
+          We now support 14 popular coding languages. At our core, LeetCode is
+          about developers. Our powerful development tools such as Playground
+          help you test, debug and even write your own projects online.
+        </p>
+      </div>
+      <div className="playground-demo w-full flex">
+        <div className="editor w-full bg-[#ecf0f1]">
+          <EditorDemo />
+        </div>
+        <div className="list w-[12.5rem] ml-5 text-sm font-normal font-NimbusSans text-[#1da09c]">
+          <ul className="w-full">
+            {listData.map((topic) => {
+              return (
+                <button
+                  className={`w-full h-[2.625rem] px-2.5 py-[0.688rem] text-left ${
+                    activeId === topic.id
+                      ? "bg-white shadow rounded-[0.313rem]"
+                      : "hover:text-[#3fbbff]"
+                  } `}
+                  key={topic.id}
+                  onClick={() => {
+                    setActiveId(topic.id);
+                  }}
+                  type="button"
+                >
+                  <FontAwesomeIcon className="pt-1" icon={faCode} width={15} />
+                  &nbsp;{topic.name}
+                </button>
+              );
+            })}
+          </ul>
+          <div className="w-full border-t-[1px] border-grey-100 mt-2.5 py-5 px-2.5 hover:text-[#3fbbff] cursor-pointer">
+            Create Playground &nbsp;
+            <FontAwesomeIcon className="pt-1" icon={faChevronRight} width={5} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function EditorDemo(): JSX.Element {
+  return (
+    <div className="editor w-full bg-[#ecf0f1]">
+      editor<div>e</div>
+    </div>
+  );
+}
+
+function StorySection(): JSX.Element {
+  return <div>Story</div>;
 }
