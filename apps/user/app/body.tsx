@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
@@ -10,11 +11,13 @@ import {
   faBuilding,
   faChevronRight,
   faCode,
+  faPlayCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 // import { ExploreCard } from "@neatcode/ui";
 
 export default function Body(): JSX.Element {
+  const [activeTopicId, setActiveTopicId] = useState<number>(1);
   return (
     <div>
       <div className="explore-section-container min-h-[400px] mt-[20px]">
@@ -140,7 +143,10 @@ export default function Body(): JSX.Element {
         </div>
       </div>
       <div className="developer-section-container lg:w-[73.125rem] border-[1px] border-blue-600 mx-auto px-2.5">
-        <DeveloperSection />
+        <DeveloperSection
+          activeTopicId={activeTopicId}
+          setActiveTopicId={setActiveTopicId}
+        />
       </div>
       <div className="story-section-container">
         <StorySection />
@@ -259,15 +265,21 @@ function CustomIcons({
   );
 }
 
-function DeveloperSection(): JSX.Element {
+function DeveloperSection({
+  activeTopicId,
+  setActiveTopicId,
+}: {
+  activeTopicId: number;
+  setActiveTopicId: (id: number) => void;
+}): JSX.Element {
   const listData = [
     { id: 1, name: "Linked List" },
     { id: 2, name: "Binary Tree" },
     { id: 3, name: "Fibonacci" },
   ];
-  const [activeId, setActiveId] = useState<number>(1);
+  // const [activeId, setActiveId] = useState<number>(1);
   return (
-    <div className="border-[1px] border-green-600 w-[83.3333%] mx-auto mt-[3.125rem] pt-3">
+    <div className="border-[1px] border-green-600 w-[83.3333%] mx-auto  mt-20  pt-3">
       <div className="w-full flex flex-col items-center">
         <CustomIcons icon={faCode} v="v1" />
         <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#1da09c] font-medium">
@@ -279,23 +291,23 @@ function DeveloperSection(): JSX.Element {
           help you test, debug and even write your own projects online.
         </p>
       </div>
-      <div className="playground-demo w-full flex">
-        <div className="editor w-full bg-[#ecf0f1]">
-          <EditorDemo />
+      <div className="playground-demo w-full flex mt-[1.875rem]">
+        <div className="editor w-full bg-[#ecf0f1] rounded-[0.313rem] border-[1px] border-[#dddddd]">
+          <EditorDemo activeTopicId={activeTopicId} />
         </div>
-        <div className="list w-[12.5rem] ml-5 text-sm font-normal font-NimbusSans text-[#1da09c]">
+        <div className="list w-[12.5rem] ml-5 text-sm font-normal font-NimbusSans">
           <ul className="w-full">
             {listData.map((topic) => {
               return (
                 <button
                   className={`w-full h-[2.625rem] px-2.5 py-[0.688rem] text-left ${
-                    activeId === topic.id
-                      ? "bg-white shadow rounded-[0.313rem]"
-                      : "hover:text-[#3fbbff]"
+                    activeTopicId === topic.id
+                      ? "bg-white shadow rounded-[0.313rem] text-[#1da09c]"
+                      : "text-[#1890ff] hover:text-[#3fbbff]"
                   } `}
                   key={topic.id}
                   onClick={() => {
-                    setActiveId(topic.id);
+                    setActiveTopicId(topic.id);
                   }}
                   type="button"
                 >
@@ -305,7 +317,7 @@ function DeveloperSection(): JSX.Element {
               );
             })}
           </ul>
-          <div className="w-full border-t-[1px] border-grey-100 mt-2.5 py-5 px-2.5 hover:text-[#3fbbff] cursor-pointer">
+          <div className="w-full border-t-[1px] border-[#dddddd] mt-2.5 py-5 px-2.5 text-[#1890ff] hover:text-[#3fbbff] cursor-pointer">
             Create Playground &nbsp;
             <FontAwesomeIcon className="pt-1" icon={faChevronRight} width={5} />
           </div>
@@ -315,10 +327,78 @@ function DeveloperSection(): JSX.Element {
   );
 }
 
-function EditorDemo(): JSX.Element {
+function EditorDemo({ activeTopicId }: { activeTopicId: number }): JSX.Element {
+  const [activeLanguageId, setActiveLanguageId] = useState<number>(1);
+  const languages = [
+    { id: 1, name: "C++" },
+    { id: 2, name: "Java" },
+    { id: 3, name: "Python" },
+  ];
   return (
     <div className="editor w-full bg-[#ecf0f1]">
-      editor<div>e</div>
+      <div className="toolbar w-full px-2.5 pt-2.5 flex justify-between items-center">
+        <div className="border-[1px] border-b-0 border-[#dddddd] rounded-t overflow-hidden flex text-[0.813rem]">
+          {languages.map((lang, idx) => {
+            return (
+              <button
+                className={`min-w-[3.438rem] h-9 px-[0.313rem] py-1.5 text-center border-b-2 border-t-2 ${
+                  activeLanguageId === lang.id
+                    ? "bg-white border-t-[#1da09c] border-b-white "
+                    : "border-t-transparent border-b-[#dddddd] hover:bg-[#fafafa] hover:text-[#333]"
+                } 
+                ${idx > 0 ? "border-l-2 border-r-[#dddddd]" : ""}
+                `}
+                key={lang.id}
+                onClick={() => {
+                  setActiveLanguageId(lang.id);
+                }}
+                type="button"
+              >
+                {lang.name}
+              </button>
+            );
+          })}
+        </div>
+        <div className="flex text-[0.813rem] mb-auto">
+          <button
+            className="h-[1.875rem] px-2 rounded flex bg-white hover:bg-[#e6e6e6] hover:text-[#333] items-center border-[1px] border-[#dddd] hover:border-[#adadad] mr-1.5"
+            type="button"
+          >
+            <Image
+              alt="paste-icon"
+              height={13}
+              src="/paste-icon.svg"
+              width={13}
+            />
+            <span className="mt-1">&nbsp; Copy</span>
+          </button>
+          <button 
+            className="h-[1.875rem] px-2 rounded  bg-[#5cb85c] hover:bg-[#449d44] flex items-center border-[1px] border-[#4cae4c] hover:border-[#398439] text-white mr-1.5"
+            type="button"
+          >
+              <FontAwesomeIcon
+                className="my-auto"
+                height={13}
+                icon={faPlayCircle}
+                width={13}
+              />
+            <span className="my-1 mt-2">&nbsp; Run</span>
+          </button>
+          <button
+            className="h-[1.875rem] px-2 rounded bg-black hover:bg-[#464646] flex items-center border-[1px] border-black text-white"
+            type="button"
+          >
+            <Image
+              alt="paste-icon"
+              height={14}
+              src="/leetcode-playground.png"
+              width={14}
+            />
+            <span className="mt-1">&nbsp; Playground</span>
+          </button>
+        </div>
+      </div>
+      <div className="editor w-full h-[25rem] bg-white">{activeTopicId}</div>
     </div>
   );
 }
