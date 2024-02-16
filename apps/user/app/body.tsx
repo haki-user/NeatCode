@@ -337,7 +337,7 @@ function EditorDemo({ topic }: { topic: string }): JSX.Element {
   const fetchCode = async (): Promise<void> => {
     try {
       const topicPath = topic.toLowerCase().replace(" ", "-");
-      const res = await fetch(`api/templates/${topicPath}/${language}`);
+      const res = await fetch(`api/templates/${topicPath}/${encodeURIComponent(language)}`);
       const data = await res.json() as { code: string};
       setCode(data.code);
     } catch (e) {
