@@ -1,5 +1,5 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "onFocusChange",
   "editor.lineNumbers": "relative"
 }
