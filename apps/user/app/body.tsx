@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,10 +14,11 @@ import {
   faPlayCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { EditorPlayground } from "@/components/editor-playground";
 // import { ExploreCard } from "@neatcode/ui";
 
 export default function Body(): JSX.Element {
-  const [activeTopicId, setActiveTopicId] = useState<number>(1);
+  const [activeTopicId, setActiveTopicId] = useState<number>(0);
   return (
     <div>
       <div className="explore-section-container min-h-[400px] mt-[20px]">
@@ -142,7 +143,7 @@ export default function Body(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className="developer-section-container lg:w-[73.125rem] border-[1px] border-blue-600 mx-auto px-2.5">
+      <div className="developer-section-container lg:w-[73.125rem] mx-auto px-2.5">
         <DeveloperSection
           activeTopicId={activeTopicId}
           setActiveTopicId={setActiveTopicId}
@@ -273,13 +274,13 @@ function DeveloperSection({
   setActiveTopicId: (id: number) => void;
 }): JSX.Element {
   const listData = [
-    { id: 1, name: "Linked List" },
-    { id: 2, name: "Binary Tree" },
-    { id: 3, name: "Fibonacci" },
+    { id: 0, name: "Linked List" },
+    { id: 1, name: "Binary Tree" },
+    { id: 2, name: "Fibonacci" },
   ];
   // const [activeId, setActiveId] = useState<number>(1);
   return (
-    <div className="border-[1px] border-green-600 w-[83.3333%] mx-auto  mt-20  pt-3">
+    <div className="w-[83.3333%] mx-auto  mt-20  pt-3">
       <div className="w-full flex flex-col items-center">
         <CustomIcons icon={faCode} v="v1" />
         <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#1da09c] font-medium">
@@ -292,8 +293,8 @@ function DeveloperSection({
         </p>
       </div>
       <div className="playground-demo w-full flex mt-[1.875rem]">
-        <div className="editor w-full bg-[#ecf0f1] rounded-[0.313rem] border-[1px] border-[#dddddd]">
-          <EditorDemo activeTopicId={activeTopicId} />
+        <div className="editor w-[calc(100%-12.5rem)] bg-[#ecf0f1] rounded-[0.313rem] border-[1px] border-[#dddddd] overflow-hidden">
+          <EditorDemo topic={listData[activeTopicId].name} />
         </div>
         <div className="list w-[12.5rem] ml-5 text-sm font-normal font-NimbusSans">
           <ul className="w-full">
@@ -327,34 +328,48 @@ function DeveloperSection({
   );
 }
 
-function EditorDemo({ activeTopicId }: { activeTopicId: number }): JSX.Element {
-  const [activeLanguageId, setActiveLanguageId] = useState<number>(1);
-  const languages = [
-    { id: 1, name: "C++" },
-    { id: 2, name: "Java" },
-    { id: 3, name: "Python" },
-  ];
+type Language = "c++" | "java" | "python";
+function EditorDemo({ topic }: { topic: string }): JSX.Element {
+  const [language, setLanguage] = useState<Language>("c++");
+  const [code, setCode] = useState("");
+  const languages: Language[] = ["c++", "java", "python"];
+
+  const fetchCode = async (): Promise<void> => {
+    try {
+      const topicPath = topic.toLowerCase().replace(" ", "-");
+      const res = await fetch(`api/templates/${topicPath}/${language}`);
+      const data = await res.json() as { code: string};
+      setCode(data.code);
+    } catch (e) {
+      if (e instanceof Error) setCode(`// ${e.message}`);
+    }
+  };
+  useEffect(() => {
+    void fetchCode();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- no need to add fetchCode
+  }, [topic, language]);
+
   return (
-    <div className="editor w-full bg-[#ecf0f1]">
-      <div className="toolbar w-full px-2.5 pt-2.5 flex justify-between items-center">
+    <div className="editor w-full bg-white">
+      <div className="toolbar w-full px-2.5 pt-2.5 flex justify-between items-center bg-[#ecf0f1]">
         <div className="border-[1px] border-b-0 border-[#dddddd] rounded-t overflow-hidden flex text-[0.813rem]">
           {languages.map((lang, idx) => {
             return (
               <button
-                className={`min-w-[3.438rem] h-9 px-[0.313rem] py-1.5 text-center border-b-2 border-t-2 ${
-                  activeLanguageId === lang.id
+                className={`min-w-[3.438rem] h-9 px-[0.313rem] py-1.5 text-center border-b-2 border-t-2 capitalize ${
+                  language === lang
                     ? "bg-white border-t-[#1da09c] border-b-white "
                     : "border-t-transparent border-b-[#dddddd] hover:bg-[#fafafa] hover:text-[#333]"
                 } 
                 ${idx > 0 ? "border-l-2 border-r-[#dddddd]" : ""}
                 `}
-                key={lang.id}
+                key={lang}
                 onClick={() => {
-                  setActiveLanguageId(lang.id);
+                  setLanguage(lang);
                 }}
                 type="button"
               >
-                {lang.name}
+                {lang}
               </button>
             );
           })}
@@ -365,23 +380,23 @@ function EditorDemo({ activeTopicId }: { activeTopicId: number }): JSX.Element {
             type="button"
           >
             <Image
-              alt="paste-icon"
+              alt="paste icon"
               height={13}
               src="/paste-icon.svg"
               width={13}
             />
             <span className="mt-1">&nbsp; Copy</span>
           </button>
-          <button 
+          <button
             className="h-[1.875rem] px-2 rounded  bg-[#5cb85c] hover:bg-[#449d44] flex items-center border-[1px] border-[#4cae4c] hover:border-[#398439] text-white mr-1.5"
             type="button"
           >
-              <FontAwesomeIcon
-                className="my-auto"
-                height={13}
-                icon={faPlayCircle}
-                width={13}
-              />
+            <FontAwesomeIcon
+              className="my-auto"
+              height={13}
+              icon={faPlayCircle}
+              width={13}
+            />
             <span className="my-1 mt-2">&nbsp; Run</span>
           </button>
           <button
@@ -389,7 +404,7 @@ function EditorDemo({ activeTopicId }: { activeTopicId: number }): JSX.Element {
             type="button"
           >
             <Image
-              alt="paste-icon"
+              alt="playground icon"
               height={14}
               src="/leetcode-playground.png"
               width={14}
@@ -398,7 +413,9 @@ function EditorDemo({ activeTopicId }: { activeTopicId: number }): JSX.Element {
           </button>
         </div>
       </div>
-      <div className="editor w-full h-[25rem] bg-white">{activeTopicId}</div>
+      <div className="editor w-full h-[25rem] mb-[0.0625rem]">
+        <EditorPlayground code={code} language={language} setCode={setCode} />
+      </div>
     </div>
   );
 }
