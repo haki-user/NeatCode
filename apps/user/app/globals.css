@@ -24,3 +24,7 @@ body {
 .rotY {
   transform: perspective(600px) rotateY(-10deg);
 }
+
+div, button {
+  transition: 0.4s ease all;
+}
