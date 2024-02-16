@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import localFont from "next/font/local";
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
+import { config } from "@fortawesome/fontawesome-svg-core";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import "./globals.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
-config.autoAddCss = false
+config.autoAddCss = false;
 
 const TypoRound = localFont({
   src: "../public/fonts/TypoRound/Typo_Round_Regular_Demo.otf",
@@ -44,6 +46,8 @@ export default function RootLayout({
         className={`${NimbusSans.variable} ${TypoRound.variable} ${inter.className}`}
       >
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
