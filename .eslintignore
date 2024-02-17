@@ -1,0 +1,8 @@
+**/**/node_modules
+**/**/.next
+**/**/public
+**/**/dist
+packages/prisma/zod
+packages/config
+packages/eslint-config-custom
+.lintstagedrc.js

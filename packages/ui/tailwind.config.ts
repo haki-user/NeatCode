@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
-import plugin from "tailwindcss/plugin"
+import plugin from "tailwindcss/plugin";
 
 const colorClasses = {
   "c-blue": "#00cded",
@@ -70,20 +70,22 @@ const config: Config = {
       },
     },
   },
-  plugins: [plugin(({ matchUtilities, theme }) => {
-    matchUtilities(
-      {
-        "animation-delay": (value: string) => {
-          return {
-            "animation-delay": value,
-          };
+  plugins: [
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value: string) => {
+            return {
+              "animation-delay": value,
+            };
+          },
         },
-      },
-      {
-        values: theme("transitionDelay"),
-      }
-    );
-  }),],
+        {
+          values: theme("transitionDelay"),
+        },
+      );
+    }),
+  ],
 };
 // eslint-disable-next-line import/no-default-export -- This is the default export
 export default config;
