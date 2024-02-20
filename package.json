@@ -21,7 +21,7 @@
     "turbo": "^1.12.4"
   },
   "name": "neatcode",
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@4.1.0",
   "workspaces": [
     "apps/*",
     "packages/*"

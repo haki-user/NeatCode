@@ -40,3 +40,12 @@ dist
 
 # other default apps
 apps/docs
+
+# yarn (after upgrade 1.22.19 -> 4)
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
