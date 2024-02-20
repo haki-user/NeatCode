@@ -22,7 +22,7 @@ export default function Body(): JSX.Element {
   const [activeTopicId, setActiveTopicId] = useState<number>(0);
   return (
     <div>
-      <div className="explore-section-container debug relative min-h-[400px] max-sm:min-h-[300px] max-sm:mt-0 sm:mt-[30px] md:mt-[80px] max-sm:pt-0 sm:max-md:pt-[60px] md:pt-[30px] transition-all duration-[400ms]">
+      <div className="explore-section-container relative min-h-[400px] max-sm:min-h-[300px] max-sm:mt-0 sm:mt-[30px] md:mt-[80px] max-sm:pt-0 sm:max-md:pt-[60px] md:pt-[30px] transition-all duration-[400ms]">
         <div className="explore-section-content relative px-[50px] m-auto lg:w-[1170px] md:w-[970px] sm:w-[750px] mx-auto max-sm:px-[15px] transition-all duration-[400ms]">
           <div className="mx-[-15px] flex max-sm:flex-col-reverse transition-all duration-[400ms]">
             <div className="sm:w-1/2  text-end px-[15px] transition-all duration-[400ms]">
