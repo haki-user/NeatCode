@@ -25,6 +25,22 @@ body {
   transform: perspective(600px) rotateY(-10deg);
 }
 
-div, button {
+.perspective {
+  transform: perspective(600px);
+}
+
+/* div, button { */
   /* transition: 0.4s ease all; */
+/* } */
+
+.debug {
+  border: 1px solid red;
+}
+
+.debug-blue {
+  border: 1px solid blue;
+}
+
+.debug-green {
+  border: 1px solid green;
 }

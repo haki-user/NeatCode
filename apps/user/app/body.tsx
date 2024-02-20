@@ -14,6 +14,7 @@ import {
   faPlayCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import Link from "next/link";
 import { EditorPlayground } from "@/components/editor-playground";
 // import { ExploreCard } from "@neatcode/ui";
 
@@ -21,57 +22,61 @@ export default function Body(): JSX.Element {
   const [activeTopicId, setActiveTopicId] = useState<number>(0);
   return (
     <div>
-      <div className="explore-section-container min-h-[400px] mt-[20px]">
-        {/* <div className="explore-section"> */}
-        <div className="explore-section-content flex w-full px-[140px]">
-          <div className="w-[596px] h-full flex flex-col items-end pr-8">
-            <div className="w-full h-24 flex justify-end items-center text-[#1da09c]">
-              <h2 className="text-2xl mr-6 font-normal">Start Exploring</h2>
-              <div className="w-16 h-16">
-                <div className="relative w-[38px] h-full mx-auto">
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] rotate-[60deg]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] -rotate-[60deg]" />
-                  <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[6px] pt-[5px] ">
-                    <FontAwesomeIcon
-                      color="#34a297"
-                      height={18}
-                      icon={faGraduationCap}
-                      width={24}
-                    />
+      <div className="explore-section-container debug relative min-h-[400px] max-sm:min-h-[300px] max-sm:mt-0 sm:mt-[30px] md:mt-[80px] max-sm:pt-0 sm:max-md:pt-[60px] md:pt-[30px] transition-all duration-[400ms]">
+        <div className="explore-section-content relative px-[50px] m-auto lg:w-[1170px] md:w-[970px] sm:w-[750px] mx-auto max-sm:px-[15px] transition-all duration-[400ms]">
+          <div className="mx-[-15px] flex max-sm:flex-col-reverse transition-all duration-[400ms]">
+            <div className="sm:w-1/2  text-end px-[15px] transition-all duration-[400ms]">
+              <div className="w-full max-sm:-mt-[30px] max-sm:py-[20px] flex sm:justify-end max-sm:justify-center sm:items-center text-[#1da09c] md:mt-[10px] transition-all duration-[400ms]">
+                <h2 className="text-[1.375rem] sm:mr-2.5 inline-block sm:my-auto relative font-normal transition-all duration-[400ms]">
+                  Start Exploring
+                </h2>
+                <div className=" w-24 h-24 inline-block sm:mr-[-63px] max-sm:hidden scale-[0.7] transition-all duration-[400ms]">
+                  <div className="relative w-[56px] h-[87px] mx-auto transition-all duration-[400ms]">
+                    <div className="absolute w-[56px] h-[87px] bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297]" />
+                    <div className="absolute w-[56px] h-[87px] bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] rotate-[60deg]" />
+                    <div className="absolute w-[56px] h-[87px] bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] -rotate-[60deg]" />
+                    <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[53px] h-[53px] bg-white rounded-full text-center">
+                      <FontAwesomeIcon
+                        className="mt-[14px]"
+                        color="#34a297"
+                        icon={faGraduationCap}
+                        size="xl"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <p className="w-full text-right text-[0.9375rem] font-normal opacity-50 leading-7 pr-9">
-              Explore is a well-organized tool that helps you get the most out
-              of NeatCode by providing structure to guide your progress towards
-              the next step in your programming career.
-            </p>
-            <div className="w-full h-10 ">
-              <p className="text-[0.9375rem] font-normal text-[#1890ff] pr-9 pt-4 flex justify-end items-center">
-                <span className="text-sm">Get Started &nbsp;</span>
-                <FontAwesomeIcon icon={faChevronRight} width={5} />
+              <p className="text-right text-[0.9375rem] font-normal opacity-50 leading-7 tracking-[0.03em] max-w-[600px] max-sm:text-center sm:mr-[-17px] m-auto transition-all duration-[400ms]">
+                Explore is a well-organized tool that helps you get the most out
+                of NeatCode by providing structure to guide your progress
+                towards the next step in your programming career.
               </p>
+              <Link className="" href="/getStarted">
+                <p className="text-[0.9375rem] leading-[1.813rem] mt-[15px] sm:-mr-[17px] font-normal text-[#1890ff] flex sm:justify-end max-sm:justify-center items-center transition-all duration-[400ms]">
+                  Get Started &nbsp;
+                  <FontAwesomeIcon icon={faChevronRight} width={5} />
+                </p>
+              </Link>
             </div>
-          </div>
-          <div className="relative explore-cards-container w-1/2 h-full transition-all delay-[400ms]">
-            <div className="absolute scale-50">
-              <div className="animate-float">
-                <ExploreCard v="v3" />
+            <div className="explore-cards-container sm:w-1/2 px-[15px] transition-all duration-[400ms]">
+              <div className="relative w-[16.25rem] h-[18.75rem] max-sm:scale-[0.6] max-sm:m-auto sm:max-md:scale-[0.8] ml-[auto] transition-all duration-[400ms]">
+                <div className="absolute scale-[0.6] w-full h-full origin-left transition-all duration-[400ms]">
+                  <div className="animate-float absolute -left-[70px] lg:-left-[210px] transition-all duration-[400ms]">
+                    <ExploreCard v="v3" />
+                  </div>
+                </div>
+                <div className="absolute scale-[0.8] w-full h-full origin-left transition-all duration-[400ms]">
+                  <div className="animate-float absolute animation-delay-[800ms] -left-[30px] lg:-left-[90px] transition-all duration-[400ms]">
+                    <ExploreCard v="v2" />
+                  </div>
+                </div>
+                <div className="absolute animate-float animation-delay-[1600ms] w-full h-full origin-left transition-all duration-[400ms]">
+                  <ExploreCard v="v1" />
+                </div>
               </div>
-            </div>
-            <div className="absolute scale-75 left-20">
-              <div className="animate-float animation-delay-[800ms]">
-                <ExploreCard v="v2" />
-              </div>
-            </div>
-            <div className="absolute left-44 animate-float animation-delay-[1600ms]">
-              <ExploreCard v="v1" />
             </div>
           </div>
         </div>
-        {/* </div> */}
       </div>
       <div className="feature-section-container w-[73.125rem] h-80 mx-auto px-1 flex">
         <div className="w-1/2 h-full border-r-2 border-r-white px-12">
@@ -179,7 +184,7 @@ export function ExploreCard({
         <div
           className={`flex ${
             v === "v2" ? "flex-row-reverse justify-end" : ""
-          } pb-5 gap-2`}
+          } pb-5 gap-2 transition-all duration-[400ms]`}
         >
           <div className="w-28 h-4 bg-white opacity-50 rounded-md" />
           <div
@@ -191,7 +196,7 @@ export function ExploreCard({
         <div
           className={`flex ${
             v !== "v1" ? "flex-row-reverse justify-end" : ""
-          } gap-4`}
+          } gap-4 transition-all duration-[400ms]`}
         >
           <div className="w-11 h-11 bg-white opacity-70 rounded-[0.625rem]" />
           <div className="w-36 h-11 bg-white opacity-70 rounded-[0.625rem]" />
@@ -337,8 +342,10 @@ function EditorDemo({ topic }: { topic: string }): JSX.Element {
   const fetchCode = async (): Promise<void> => {
     try {
       const topicPath = topic.toLowerCase().replace(" ", "-");
-      const res = await fetch(`api/templates/${topicPath}/${encodeURIComponent(language)}`);
-      const data = await res.json() as { code: string};
+      const res = await fetch(
+        `api/templates/${topicPath}/${encodeURIComponent(language)}`
+      );
+      const data = (await res.json()) as { code: string };
       setCode(data.code);
     } catch (e) {
       if (e instanceof Error) setCode(`// ${e.message}`);

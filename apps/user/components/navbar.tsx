@@ -38,10 +38,9 @@ function NavbarItem({
 export default function Navbar(): JSX.Element {
   return (
     <div
-      className="navbar flex items-center justify-between 
-        min-[1200px]:w-[1170px] h-10 px-[15px]  mx-auto mt-[20px]"
+      className="navbar flex items-center justify-between sm:w-[750px] md:w-[970px] lg:w-[1170px] h-10 px-[15px]  mx-auto mt-[20px] max-sm:hidden transition-all duration-[400ms]"
     >
-      <Link className="flex items-center justify-center" href="/">
+      <Link className="flex items-center justify-center transition-all duration-[400ms]" href="/">
         <div className="flex items-center">
           <Image
             alt="Leetcode"
@@ -60,7 +59,7 @@ export default function Navbar(): JSX.Element {
         </div>
       </Link>
       <div className="nav-right h-10">
-        <div className="nav-menu h-full mb-auto mt-1 pr-2">
+        <div className="nav-menu transition-all duration-[400ms] m-2 text-sm ">
           <NavbarItem href="/premium" isOrange text="Premium" />
           <NavbarItem href="/explore" text="Explore" />
           <NavbarItem href="/product" text="Product" />
