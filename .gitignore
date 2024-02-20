@@ -37,3 +37,6 @@ yarn-error.log*
 
 #
 dist
+
+# other default apps
+apps/docs
