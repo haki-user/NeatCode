@@ -68,6 +68,13 @@ const config: Config = {
       animation: {
         float: "float 8s ease-in-out infinite",
       },
+      screens: {
+        sm: "768px",
+        md: "992px",
+        lg: "1200px",
+        xl: "1440px",
+        "2xl": "1536px",
+      },
     },
   },
   plugins: [
