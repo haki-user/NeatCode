@@ -2,8 +2,9 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:user": "turbo run build --scope=user --include-dependencies --no-deps",
     "dev": "turbo run dev",
-    "deploy": "turbo run deploy",
+    "deploy": "npx vercel deploy",
     "test": "turbo run test || true",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
