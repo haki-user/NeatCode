@@ -38,7 +38,7 @@ function NavbarItem({
 export default function Navbar(): JSX.Element {
   return (
     <div
-      className="navbar flex items-center justify-between sm:w-[750px] md:w-[970px] lg:w-[1170px] h-10 px-[15px]  mx-auto mt-[20px] max-sm:hidden transition-all duration-[400ms]"
+      className="navbar flex items-center justify-between sm:w-[750px] md:w-[970px] lg:w-[1170px] h-10 px-[15px]  mx-auto  max-sm:hidden transition-all duration-[400ms]"
     >
       <Link className="flex items-center justify-center transition-all duration-[400ms]" href="/">
         <div className="flex items-center">

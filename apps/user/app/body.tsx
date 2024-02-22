@@ -22,20 +22,20 @@ export default function Body(): JSX.Element {
   const [activeTopicId, setActiveTopicId] = useState<number>(0);
   return (
     <div>
-      <div className="explore-section-container relative min-h-[400px] max-sm:min-h-[300px] max-sm:mt-0 sm:mt-[30px] md:mt-[80px] max-sm:pt-0 sm:max-md:pt-[60px] md:pt-[30px] transition-all duration-[400ms]">
-        <div className="explore-section-content relative px-[50px] m-auto lg:w-[1170px] md:w-[970px] sm:w-[750px] mx-auto max-sm:px-[15px] transition-all duration-[400ms]">
-          <div className="mx-[-15px] flex max-sm:flex-col-reverse transition-all duration-[400ms]">
-            <div className="sm:w-1/2  text-end px-[15px] transition-all duration-[400ms]">
-              <div className="w-full max-sm:-mt-[30px] max-sm:py-[20px] flex sm:justify-end max-sm:justify-center sm:items-center text-[#1da09c] md:mt-[10px] transition-all duration-[400ms]">
-                <h2 className="text-[1.375rem] sm:mr-2.5 inline-block sm:my-auto relative font-normal transition-all duration-[400ms]">
+      <div className="explore-section-container relative min-h-[400px] transition-all duration-[400ms] max-sm:mt-0 max-sm:min-h-[300px] max-sm:pt-0 sm:mt-[30px] sm:max-md:pt-[60px] md:mt-[80px] md:pt-[30px]">
+        <div className="explore-section-content relative m-auto mx-auto px-[50px] transition-all duration-[400ms] max-sm:px-[15px] sm:w-[750px] md:w-[970px] lg:w-[1170px]">
+          <div className="mx-[-15px] flex transition-all duration-[400ms] max-sm:flex-col-reverse">
+            <div className="px-[15px]  text-end transition-all duration-[400ms] sm:w-1/2">
+              <div className="flex w-full text-[#1da09c] transition-all duration-[400ms] max-sm:-mt-[30px] max-sm:justify-center max-sm:py-[20px] sm:items-center sm:justify-end md:mt-[10px]">
+                <h2 className="relative inline-block text-[1.375rem] font-normal transition-all duration-[400ms] sm:my-auto sm:mr-2.5">
                   Start Exploring
                 </h2>
-                <div className=" w-24 h-24 inline-block sm:mr-[-63px] max-sm:hidden scale-[0.7] transition-all duration-[400ms]">
-                  <div className="relative w-[56px] h-[87px] mx-auto transition-all duration-[400ms]">
-                    <div className="absolute w-[56px] h-[87px] bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297]" />
-                    <div className="absolute w-[56px] h-[87px] bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] rotate-[60deg]" />
-                    <div className="absolute w-[56px] h-[87px] bg-gradient-to-br from-[#4db6ac] to-[#00796b] rounded-[0.625rem] text-[#34a297] -rotate-[60deg]" />
-                    <div className="absolute top-0 bottom-0 right-0 left-0 m-auto w-[53px] h-[53px] bg-white rounded-full text-center">
+                <div className=" inline-block h-24 w-24 scale-[0.7] transition-all duration-[400ms] max-sm:hidden sm:mr-[-63px]">
+                  <div className="relative mx-auto h-[87px] w-[56px] transition-all duration-[400ms]">
+                    <div className="absolute h-[87px] w-[56px] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
+                    <div className="absolute h-[87px] w-[56px] rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
+                    <div className="absolute h-[87px] w-[56px] -rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
+                    <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-[53px] w-[53px] rounded-full bg-white text-center">
                       <FontAwesomeIcon
                         className="mt-[14px]"
                         color="#34a297"
@@ -46,31 +46,30 @@ export default function Body(): JSX.Element {
                   </div>
                 </div>
               </div>
-              <p className="text-right text-[0.9375rem] font-normal opacity-50 leading-7 tracking-[0.03em] max-w-[600px] max-sm:text-center sm:mr-[-17px] m-auto transition-all duration-[400ms]">
-                Explore is a well-organized tool that helps you get the most out
-                of NeatCode by providing structure to guide your progress
-                towards the next step in your programming career.
+              <p className="m-auto max-w-[600px] text-right text-[0.9375rem] font-normal leading-7 tracking-[0.03em] opacity-50 transition-all duration-[400ms] max-sm:text-center sm:mr-[-17px]">
+                Explore is a well-organized tool that helps you get the most out of NeatCode by providing
+                structure to guide your progress towards the next step in your programming career.
               </p>
               <Link className="" href="/getStarted">
-                <p className="text-[0.9375rem] leading-[1.813rem] mt-[15px] sm:-mr-[17px] font-normal text-[#1890ff] flex sm:justify-end max-sm:justify-center items-center transition-all duration-[400ms]">
+                <p className="mt-[15px] flex items-center text-[0.9375rem] font-normal leading-[1.813rem] text-[#1890ff] transition-all duration-[400ms] max-sm:justify-center sm:-mr-[17px] sm:justify-end">
                   Get Started &nbsp;
                   <FontAwesomeIcon icon={faChevronRight} width={5} />
                 </p>
               </Link>
             </div>
-            <div className="explore-cards-container sm:w-1/2 px-[15px] transition-all duration-[400ms]">
-              <div className="relative w-[16.25rem] h-[18.75rem] max-sm:scale-[0.6] max-sm:m-auto sm:max-md:scale-[0.8] ml-[auto] transition-all duration-[400ms]">
-                <div className="absolute scale-[0.6] w-full h-full origin-left transition-all duration-[400ms]">
-                  <div className="animate-float absolute -left-[70px] lg:-left-[210px] transition-all duration-[400ms]">
+            <div className="explore-cards-container px-[15px] transition-all duration-[400ms] sm:w-1/2">
+              <div className="relative ml-[auto] h-[18.75rem] w-[16.25rem] transition-all duration-[400ms] max-sm:m-auto max-sm:scale-[0.6] sm:max-md:scale-[0.8]">
+                <div className="absolute h-full w-full origin-left scale-[0.6] transition-all duration-[400ms]">
+                  <div className="animate-float absolute -left-[70px] transition-all duration-[400ms] lg:-left-[210px]">
                     <ExploreCard v="v3" />
                   </div>
                 </div>
-                <div className="absolute scale-[0.8] w-full h-full origin-left transition-all duration-[400ms]">
-                  <div className="animate-float absolute animation-delay-[800ms] -left-[30px] lg:-left-[90px] transition-all duration-[400ms]">
+                <div className="absolute h-full w-full origin-left scale-[0.8] transition-all duration-[400ms]">
+                  <div className="animate-float animation-delay-[800ms] absolute -left-[30px] transition-all duration-[400ms] lg:-left-[90px]">
                     <ExploreCard v="v2" />
                   </div>
                 </div>
-                <div className="absolute animate-float animation-delay-[1600ms] w-full h-full origin-left transition-all duration-[400ms]">
+                <div className="animate-float animation-delay-[1600ms] absolute h-full w-full origin-left transition-all duration-[400ms]">
                   <ExploreCard v="v1" />
                 </div>
               </div>
@@ -78,81 +77,82 @@ export default function Body(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className="feature-section-container w-[73.125rem] h-80 mx-auto px-1 flex">
-        <div className="w-1/2 h-full border-r-2 border-r-white px-12">
-          <div className="relative w-full h-[5.785rem] flex items-center">
-            <div className="absolute left-20">
-              <CustomIcons icon={faTrophy} v="v4" />
-            </div>
-            <div className="absolute left-10">
-              <CustomIcons icon={faUsers} v="v3" />
-            </div>
-            <div className="absolute">
-              <div className="w-16 h-16">
-                <div className="relative w-[38px] h-full mx-auto">
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.5rem]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.5rem] rotate-[60deg]" />
-                  <div className="absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br from-[#2196f3] to-[#4fc3f7] rounded-[0.5rem] -rotate-[60deg]" />
-                  <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[0.1rem] pt-[5px] ">
-                    <b className="text-[#259af3] font-TypoRound text-sm text-center">
-                      3200
-                    </b>
+      <div className="feature-section-container mx-auto px-[15px] sm:-mt-[20px] sm:w-[750px] md:w-[970px] lg:w-[73.125rem]">
+        <div className="-mx-[15px] flex max-sm:flex-col">
+          <div className="mt-[50px] w-1/2 max-sm:mx-auto max-sm:mt-[80px] max-sm:w-full max-sm:px-[15px] sm:border-r-2 sm:border-r-white sm:px-[50px] sm:pb-[20px] sm:pt-[17px]">
+            <div className="sm:-mt-[13px]">
+              <div className="scale-[0.7] text-start leading-[0] max-sm:text-center sm:origin-left">
+                <div className="relative z-[2] inline-block">
+                  <div className="h-24 w-24">
+                    <div className="relative mx-auto h-[87px] w-[56px]">
+                      <div className="absolute h-[87px] w-[56px] rounded-[0.625rem] bg-gradient-to-br from-[#4fc3f7] to-[#2196f3]" />
+                      <div className="absolute h-[87px] w-[56px] rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4fc3f7] to-[#2196f3]" />
+                      <div className="absolute h-[87px] w-[56px] -rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4fc3f7] to-[#2196f3]" />
+                      <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-[53px] w-[53px] rounded-full bg-white pt-[13px] text-center">
+                        <b className="font-TypoRound relative text-center text-xl text-[#259af3]">
+                          3200<span className="relative -top-[11px] right-[4px] text-base">+</span>
+                        </b>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div className="relative z-[1] -ml-[30px] inline-block">
+                  <CustomIcons icon={faUsers} v="v3" />
+                </div>
+                <div className="relative -ml-[30px] inline-block">
+                  <CustomIcons icon={faTrophy} v="v4" />
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-            <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#1890ff] font-medium">
-              Questions, Community & Contests
-            </h2>
-            <p className="text-[0.9375rem] leading-[1.9rem] tracking-normal opacity-30 font-normal">
-              Over 3200 questions for you to practice. Come and join one of the
-              largest tech communities with hundreds of thousands of active
-              users and participate in our contests to challenge yourself and
-              earn rewards.
-            </p>
-          </div>
-          <div className="w-full text-[#1890ff] mt-4">
-            <p className="flex items-center text-[0.9375rem] font-normal">
-              <span>View Questions &nbsp;</span>
-              <FontAwesomeIcon icon={faChevronRight} width={5} />
-            </p>
-          </div>
-        </div>
-        <div className="w-1/2 h-full px-12">
-          <div className="relative w-full h-[5.785rem] flex items-center">
-            <div className="absolute ml-10">
-              <CustomIcons icon={faBuilding} v="v6" />
+            <div>
+              <h2 className="font-NimbusSans mb-5 mt-2.5 text-[1.375rem] font-medium text-[#1890ff] max-sm:text-center">
+                Questions, Community & Contests
+              </h2>
+              <p className="max-w-[600px] text-[0.9375rem] font-normal leading-[1.9em] tracking-[0.03em] text-[#333333] opacity-50 max-sm:mx-auto max-sm:text-center">
+                Over 3250 questions for you to practice. Come and join one of the largest tech communities
+                with hundreds of thousands of active users and participate in our contests to challenge
+                yourself and earn rewards.
+              </p>
             </div>
-            <div className="absolute">
-              <CustomIcons icon={faBriefcase} v="v5" />
+            <Link className="w-full text-[#1890ff]" href="/problems">
+              <p className="mt-[15px] flex items-center text-[0.9375rem] font-normal leading-[1.9em] tracking-[0.03em] max-sm:justify-center">
+                <span>View Questions &nbsp;</span>
+                <FontAwesomeIcon icon={faChevronRight} size="xs" />
+              </p>
+            </Link>
+          </div>
+          <div className="mt-[50px] w-1/2 max-sm:mx-auto max-sm:mt-[80px] max-sm:w-full max-sm:px-[15px] sm:px-[50px] sm:pb-[20px] sm:pt-[17px]">
+            <div className="sm:-mt-[13px]">
+              <div className="scale-[0.7] text-start leading-[0] max-sm:text-center sm:origin-left">
+                <div className="relative z-[1] inline-block">
+                  <CustomIcons icon={faBriefcase} v="v5" />
+                </div>
+                <div className="relative -ml-[30px] inline-block">
+                  <CustomIcons icon={faBuilding} v="v6" />
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#b7892b] font-medium">
-              Companies & Candidates
-            </h2>
-            <p className="text-[0.9375rem] leading-[1.9rem] tracking-normal opacity-30 font-normal">
-              Not only does LeetCode prepare candidates for technical
-              interviews, we also help companies identify top technical talent.
-              From sponsoring contests to providing online assessments and
-              training, we offer numerous services to businesses.
-            </p>
-          </div>
-          <div className="w-full text-[#1890ff] mt-4">
-            <p className="flex text-[0.9375rem] items-center font-normal">
-              <span>Business Opportunities &nbsp;</span>
-              <FontAwesomeIcon icon={faChevronRight} width={5} />
-            </p>
+            <div>
+              <h2 className="font-NimbusSans mb-5 mt-2.5 text-[1.375rem] font-medium text-[#b7892b] max-sm:text-center">
+                Companies & Candidates
+              </h2>
+              <p className="max-w-[600px] text-[0.9375rem] font-normal leading-[1.9em] tracking-[0.03em] text-[#333333] opacity-50 max-sm:mx-auto max-sm:text-center">
+                Not only does NeatCode prepare candidates for technical interviews, we also help companies
+                identify top technical talent. From sponsoring contests to providing online assessments and
+                training, we offer numerous services to businesses.
+              </p>
+            </div>
+            <Link className="w-full text-[#1890ff]" href="/bussiness">
+              <p className="mt-[15px] flex items-center text-[0.9375rem] font-normal leading-[1.9em] tracking-[0.03em] max-sm:justify-center">
+                <span>Business Opportunities &nbsp;</span>
+                <FontAwesomeIcon icon={faChevronRight} size="xs" />
+              </p>
+            </Link>
           </div>
         </div>
       </div>
-      <div className="developer-section-container lg:w-[73.125rem] mx-auto px-2.5">
-        <DeveloperSection
-          activeTopicId={activeTopicId}
-          setActiveTopicId={setActiveTopicId}
-        />
+      <div className="developer-section-container mx-auto px-2.5 lg:w-[73.125rem]">
+        <DeveloperSection activeTopicId={activeTopicId} setActiveTopicId={setActiveTopicId} />
       </div>
       <div className="story-section-container">
         <StorySection />
@@ -161,11 +161,7 @@ export default function Body(): JSX.Element {
   );
 }
 
-export function ExploreCard({
-  v = "v1",
-}: {
-  v: "v1" | "v2" | "v3";
-}): JSX.Element {
+export function ExploreCard({ v = "v1" }: { v: "v1" | "v2" | "v3" }): JSX.Element {
   const col: Record<string, string> = {
     v1: "from-[#00cded] to-[#96d1f9]",
     v2: "from-[#8dc63f] to-[#b9f4bc]",
@@ -177,41 +173,30 @@ export function ExploreCard({
     v3: "opacity-20",
   };
   return (
-    <div className="explore-card w-64 h-[19rem] rounded-[1.4rem] bg-white shadow rotY">
+    <div className="explore-card rotY h-[19rem] w-64 rounded-[1.4rem] bg-white shadow">
       <div
-        className={`bg-gradient-to-t ${col[v]} w-full h-[13.65rem] rounded-t-[1.4rem] p-5 pb-0 ${opacity[v]}`}
-      >
+        className={`bg-gradient-to-t ${col[v]} h-[13.65rem] w-full rounded-t-[1.4rem] p-5 pb-0 ${opacity[v]}`}>
         <div
           className={`flex ${
             v === "v2" ? "flex-row-reverse justify-end" : ""
-          } pb-5 gap-2 transition-all duration-[400ms]`}
-        >
-          <div className="w-28 h-4 bg-white opacity-50 rounded-md" />
-          <div
-            className={`${
-              v === "v2" ? "w-5" : "w-12"
-            } h-4 bg-white opacity-50 rounded-md`}
-          />
+          } gap-2 pb-5 transition-all duration-[400ms]`}>
+          <div className="h-4 w-28 rounded-md bg-white opacity-50" />
+          <div className={`${v === "v2" ? "w-5" : "w-12"} h-4 rounded-md bg-white opacity-50`} />
         </div>
         <div
           className={`flex ${
             v !== "v1" ? "flex-row-reverse justify-end" : ""
-          } gap-4 transition-all duration-[400ms]`}
-        >
-          <div className="w-11 h-11 bg-white opacity-70 rounded-[0.625rem]" />
-          <div className="w-36 h-11 bg-white opacity-70 rounded-[0.625rem]" />
+          } gap-4 transition-all duration-[400ms]`}>
+          <div className="h-11 w-11 rounded-[0.625rem] bg-white opacity-70" />
+          <div className="h-11 w-36 rounded-[0.625rem] bg-white opacity-70" />
         </div>
-        {v === "v3" ? (
-          <div className="w-11 h-11 bg-white opacity-50 rounded-[0.625rem] mt-5" />
-        ) : (
-          ""
-        )}
+        {v === "v3" ? <div className="mt-5 h-11 w-11 rounded-[0.625rem] bg-white opacity-50" /> : ""}
       </div>
       <div className="relative">
-        <div className="absolute w-24 h-4 bg-[#F5F6F8] m-5 mt-9 rounded-[0.625rem]" />
+        <div className="absolute m-5 mt-9 h-4 w-24 rounded-[0.625rem] bg-[#F5F6F8]" />
         <div className="absolute -top-12 right-3">
-          <div className="w-[4.75rem] h-[4.75rem] rounded-full bg-white shadow">
-            <div className="w-full h-full flex justify-center items-center">
+          <div className="h-[4.75rem] w-[4.75rem] rounded-full bg-white shadow">
+            <div className="flex h-full w-full items-center justify-center">
               <FontAwesomeIcon color="#e6eaef" icon={faPlay} size="xl" />
             </div>
           </div>
@@ -229,13 +214,13 @@ function CustomIcons({
   icon: IconDefinition;
 }): JSX.Element {
   const bg = {
-    v1: "from-[#4db6ac] to-[#00796b] ",
-    v2: "from-[#2196f3] to-[#4fc3f7] ",
-    v3: "from-[#cddc39] to-[#8bc34a] ",
-    v4: "from-[#ffeb3b] to-[#fbc02d] ",
-    v5: "from-[#e6ce6a] to-[#b7892b] ",
-    v6: "from-[#e0e0e0] to-[#bdbdbd] ",
-    v7: "from-[#f4511e] to-[#b71c1c] ",
+    v1: "from-[#4db6ac] to-[#00796b]",
+    v2: "from-[#4fc3f7] to-[#2196f3]",
+    v3: "from-[#cddc39] to-[#8bc34a]",
+    v4: "from-[#ffeb3b] to-[#fbc02d]",
+    v5: "from-[#e6ce6a] to-[#b7892b]",
+    v6: "from-[#e0e0e0] to-[#bdbdbd]",
+    v7: "from-[#f4511e] to-[#b71c1c]",
   };
   const colors = {
     v1: "#34a297",
@@ -246,25 +231,28 @@ function CustomIcons({
     v6: "#9e9e9e",
     v7: "#34a297",
   };
+  // <div className=" inline-block h-24 w-24 scale-[0.7] max-sm:hidden sm:mr-[-63px]">
+  //   <div className="relative mx-auto h-[87px] w-[56px]">
+  //     <div className="absolute h-[87px] w-[56px] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
+  //     <div className="absolute h-[87px] w-[56px] rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
+  //     <div className="absolute h-[87px] w-[56px] -rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
+  //     <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-[53px] w-[53px] rounded-full bg-white text-center">
+  //       <FontAwesomeIcon className="mt-[14px]" color="#34a297" icon={faGraduationCap} size="xl" />
+  //     </div>
+  //   </div>
+  // </div>;
   return (
-    <div className="w-16 h-16">
-      <div className="relative w-[38px] h-full mx-auto">
+    <div className="h-24 w-24">
+      <div className="relative mx-auto h-[87px] w-[56px]">
+        <div className={`absolute h-[87px] w-[56px] bg-gradient-to-br ${bg[v]} rounded-[0.625rem]`} />
         <div
-          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.5rem]`}
+          className={`absolute h-[87px] w-[56px] bg-gradient-to-br ${bg[v]} rotate-[60deg] rounded-[0.625rem]`}
         />
         <div
-          className={`absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.5rem] rotate-[60deg]`}
+          className={`"absolute h-[87px] w-[56px] bg-gradient-to-br ${bg[v]} -rotate-[60deg] rounded-[0.625rem]`}
         />
-        <div
-          className={`"absolute w-[38px] h-[60px] p-0 m-0 bg-gradient-to-br ${bg[v]} rounded-[0.5rem] -rotate-[60deg]`}
-        />
-        <div className="absolute top-[12px] left-[1px]  w-9 h-9 bg-white rounded-full pl-[6px] pt-[5px] ">
-          <FontAwesomeIcon
-            color={colors[v]}
-            height={18}
-            icon={icon}
-            width={24}
-          />
+        <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-[53px] w-[53px] rounded-full bg-white text-center">
+          <FontAwesomeIcon className="mt-[14px]" color={colors[v]} icon={icon} size="xl" />
         </div>
       </div>
     </div>
@@ -285,45 +273,41 @@ function DeveloperSection({
   ];
   // const [activeId, setActiveId] = useState<number>(1);
   return (
-    <div className="w-[83.3333%] mx-auto  mt-20  pt-3">
-      <div className="w-full flex flex-col items-center">
+    <div className="mx-auto mt-20  w-[83.3333%]  pt-3">
+      <div className="flex w-full flex-col items-center">
         <CustomIcons icon={faCode} v="v1" />
-        <h2 className="mt-2.5 mb-5 font-NimbusSans text-[1.375rem] text-[#1da09c] font-medium">
-          Developer
-        </h2>
-        <p className="text-center text-[0.9375rem] leading-[1.9rem] tracking-normal opacity-30 font-normal max-w-[37.5rem] m-auto">
-          We now support 14 popular coding languages. At our core, LeetCode is
-          about developers. Our powerful development tools such as Playground
-          help you test, debug and even write your own projects online.
+        <h2 className="font-NimbusSans mb-5 mt-2.5 text-[1.375rem] font-medium text-[#1da09c]">Developer</h2>
+        <p className="m-auto max-w-[37.5rem] text-center text-[0.9375rem] font-normal leading-[1.9rem] tracking-normal opacity-30">
+          We now support 14 popular coding languages. At our core, NeatCode is about developers. Our powerful
+          development tools such as Playground help you test, debug and even write your own projects online.
         </p>
       </div>
-      <div className="playground-demo w-full flex mt-[1.875rem]">
-        <div className="editor w-[calc(100%-12.5rem)] bg-[#ecf0f1] rounded-[0.313rem] border-[1px] border-[#dddddd] overflow-hidden">
+      <div className="playground-demo mt-[1.875rem] flex w-full">
+        <div className="editor w-[calc(100%-12.5rem)] overflow-hidden rounded-[0.313rem] border-[1px] border-[#dddddd] bg-[#ecf0f1]">
           <EditorDemo topic={listData[activeTopicId].name} />
         </div>
-        <div className="list w-[12.5rem] ml-5 text-sm font-normal font-NimbusSans">
+        <div className="list font-NimbusSans ml-5 w-[12.5rem] text-sm font-normal">
           <ul className="w-full">
             {listData.map((topic) => {
               return (
                 <button
-                  className={`w-full h-[2.625rem] px-2.5 py-[0.688rem] text-left ${
+                  className={`h-[2.625rem] w-full px-2.5 py-[0.688rem] text-left ${
                     activeTopicId === topic.id
-                      ? "bg-white shadow rounded-[0.313rem] text-[#1da09c]"
+                      ? "rounded-[0.313rem] bg-white text-[#1da09c] shadow"
                       : "text-[#1890ff] hover:text-[#3fbbff]"
                   } `}
                   key={topic.id}
                   onClick={() => {
                     setActiveTopicId(topic.id);
                   }}
-                  type="button"
-                >
+                  type="button">
                   <FontAwesomeIcon className="pt-1" icon={faCode} width={15} />
                   &nbsp;{topic.name}
                 </button>
               );
             })}
           </ul>
-          <div className="w-full border-t-[1px] border-[#dddddd] mt-2.5 py-5 px-2.5 text-[#1890ff] hover:text-[#3fbbff] cursor-pointer">
+          <div className="mt-2.5 w-full cursor-pointer border-t-[1px] border-[#dddddd] px-2.5 py-5 text-[#1890ff] hover:text-[#3fbbff]">
             Create Playground &nbsp;
             <FontAwesomeIcon className="pt-1" icon={faChevronRight} width={5} />
           </div>
@@ -342,9 +326,7 @@ function EditorDemo({ topic }: { topic: string }): JSX.Element {
   const fetchCode = async (): Promise<void> => {
     try {
       const topicPath = topic.toLowerCase().replace(" ", "-");
-      const res = await fetch(
-        `api/templates/${topicPath}/${encodeURIComponent(language)}`
-      );
+      const res = await fetch(`api/templates/${topicPath}/${encodeURIComponent(language)}`);
       const data = (await res.json()) as { code: string };
       setCode(data.code);
     } catch (e) {
@@ -358,15 +340,15 @@ function EditorDemo({ topic }: { topic: string }): JSX.Element {
 
   return (
     <div className="editor w-full bg-white">
-      <div className="toolbar w-full px-2.5 pt-2.5 flex justify-between items-center bg-[#ecf0f1]">
-        <div className="border-[1px] border-b-0 border-[#dddddd] rounded-t overflow-hidden flex text-[0.813rem]">
+      <div className="toolbar flex w-full items-center justify-between bg-[#ecf0f1] px-2.5 pt-2.5">
+        <div className="flex overflow-hidden rounded-t border-[1px] border-b-0 border-[#dddddd] text-[0.813rem]">
           {languages.map((lang, idx) => {
             return (
               <button
-                className={`min-w-[3.438rem] h-9 px-[0.313rem] py-1.5 text-center border-b-2 border-t-2 capitalize ${
+                className={`h-9 min-w-[3.438rem] border-b-2 border-t-2 px-[0.313rem] py-1.5 text-center capitalize ${
                   language === lang
-                    ? "bg-white border-t-[#1da09c] border-b-white "
-                    : "border-t-transparent border-b-[#dddddd] hover:bg-[#fafafa] hover:text-[#333]"
+                    ? "border-b-white border-t-[#1da09c] bg-white "
+                    : "border-b-[#dddddd] border-t-transparent hover:bg-[#fafafa] hover:text-[#333]"
                 } 
                 ${idx > 0 ? "border-l-2 border-r-[#dddddd]" : ""}
                 `}
@@ -374,53 +356,34 @@ function EditorDemo({ topic }: { topic: string }): JSX.Element {
                 onClick={() => {
                   setLanguage(lang);
                 }}
-                type="button"
-              >
+                type="button">
                 {lang}
               </button>
             );
           })}
         </div>
-        <div className="flex text-[0.813rem] mb-auto">
+        <div className="mb-auto flex text-[0.813rem]">
           <button
-            className="h-[1.875rem] px-2 rounded flex bg-white hover:bg-[#e6e6e6] hover:text-[#333] items-center border-[1px] border-[#dddd] hover:border-[#adadad] mr-1.5"
-            type="button"
-          >
-            <Image
-              alt="paste icon"
-              height={13}
-              src="/paste-icon.svg"
-              width={13}
-            />
+            className="mr-1.5 flex h-[1.875rem] items-center rounded border-[1px] border-[#dddd] bg-white px-2 hover:border-[#adadad] hover:bg-[#e6e6e6] hover:text-[#333]"
+            type="button">
+            <Image alt="paste icon" height={13} src="/paste-icon.svg" width={13} />
             <span className="mt-1">&nbsp; Copy</span>
           </button>
           <button
-            className="h-[1.875rem] px-2 rounded  bg-[#5cb85c] hover:bg-[#449d44] flex items-center border-[1px] border-[#4cae4c] hover:border-[#398439] text-white mr-1.5"
-            type="button"
-          >
-            <FontAwesomeIcon
-              className="my-auto"
-              height={13}
-              icon={faPlayCircle}
-              width={13}
-            />
+            className="mr-1.5 flex h-[1.875rem]  items-center rounded border-[1px] border-[#4cae4c] bg-[#5cb85c] px-2 text-white hover:border-[#398439] hover:bg-[#449d44]"
+            type="button">
+            <FontAwesomeIcon className="my-auto" height={13} icon={faPlayCircle} width={13} />
             <span className="my-1 mt-2">&nbsp; Run</span>
           </button>
           <button
-            className="h-[1.875rem] px-2 rounded bg-black hover:bg-[#464646] flex items-center border-[1px] border-black text-white"
-            type="button"
-          >
-            <Image
-              alt="playground icon"
-              height={14}
-              src="/leetcode-playground.png"
-              width={14}
-            />
+            className="flex h-[1.875rem] items-center rounded border-[1px] border-black bg-black px-2 text-white hover:bg-[#464646]"
+            type="button">
+            <Image alt="playground icon" height={14} src="/leetcode-playground.png" width={14} />
             <span className="mt-1">&nbsp; Playground</span>
           </button>
         </div>
       </div>
-      <div className="editor w-full h-[25rem] mb-[0.0625rem]">
+      <div className="editor mb-[0.0625rem] h-[25rem] w-full">
         <EditorPlayground code={code} language={language} setCode={setCode} />
       </div>
     </div>
