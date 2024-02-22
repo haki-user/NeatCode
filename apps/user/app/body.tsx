@@ -231,16 +231,6 @@ function CustomIcons({
     v6: "#9e9e9e",
     v7: "#34a297",
   };
-  // <div className=" inline-block h-24 w-24 scale-[0.7] max-sm:hidden sm:mr-[-63px]">
-  //   <div className="relative mx-auto h-[87px] w-[56px]">
-  //     <div className="absolute h-[87px] w-[56px] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
-  //     <div className="absolute h-[87px] w-[56px] rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
-  //     <div className="absolute h-[87px] w-[56px] -rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br from-[#4db6ac] to-[#00796b] text-[#34a297]" />
-  //     <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-[53px] w-[53px] rounded-full bg-white text-center">
-  //       <FontAwesomeIcon className="mt-[14px]" color="#34a297" icon={faGraduationCap} size="xl" />
-  //     </div>
-  //   </div>
-  // </div>;
   return (
     <div className="h-24 w-24">
       <div className="relative mx-auto h-[87px] w-[56px]">

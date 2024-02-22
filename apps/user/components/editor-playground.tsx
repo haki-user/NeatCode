@@ -21,11 +21,7 @@ interface EditorPlaygroundProps {
   setCode: (val: string) => void;
 }
 
-export function EditorPlayground({
-  language,
-  code,
-  setCode,
-}: EditorPlaygroundProps): JSX.Element {
+export function EditorPlayground({ language, code, setCode }: EditorPlaygroundProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars -- do something about viewUpdate
   const handleCodeChange = (value: string, viewUpdate: ViewUpdate): void => {
     setCode(value);
