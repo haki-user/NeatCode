@@ -1,6 +1,7 @@
-"use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
+"use client"; // remove??
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
@@ -11,18 +12,22 @@ import {
   faBuilding,
   faChevronRight,
   faCode,
-  faPlayCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import Link from "next/link";
-import { EditorPlayground } from "@/components/editor-playground";
-// import { ExploreCard } from "@neatcode/ui";
+import { Spinner } from "../components/spinner";
+
+const EditorDemo = dynamic(() => import("../components/editor-demo").then((module) => module.EditorDemo), {
+  ssr: false,
+  loading: () => <Spinner />,
+});
 
 export default function Body(): JSX.Element {
   const [activeTopicId, setActiveTopicId] = useState<number>(0);
   return (
     <div>
-      <div className="explore-section-container relative min-h-[400px] transition-all duration-[400ms] max-sm:mt-0 max-sm:min-h-[300px] max-sm:pt-0 sm:mt-[30px] sm:max-md:pt-[60px] md:mt-[80px] md:pt-[30px]">
+      <div
+        className="explore-section-container relative min-h-[400px] transition-all duration-[400ms] max-sm:mt-0 max-sm:min-h-[300px] max-sm:pt-0 sm:mt-[30px] sm:max-md:pt-[60px] md:mt-[80px] md:pt-[30px]"
+        id="explore-section">
         <div className="explore-section-content relative m-auto mx-auto px-[50px] transition-all duration-[400ms] max-sm:px-[15px] sm:w-[750px] md:w-[970px] lg:w-[1170px]">
           <div className="mx-[-15px] flex transition-all duration-[400ms] max-sm:flex-col-reverse">
             <div className="px-[15px]  text-end transition-all duration-[400ms] sm:w-1/2">
@@ -77,7 +82,9 @@ export default function Body(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className="feature-section-container mx-auto px-[15px] sm:-mt-[20px] sm:w-[750px] md:w-[970px] lg:w-[73.125rem]">
+      <div
+        className="feature-section-container mx-auto px-[15px] sm:-mt-[20px] sm:w-[750px] md:w-[970px] lg:w-[73.125rem]"
+        id="product-section">
         <div className="-mx-[15px] flex max-sm:flex-col">
           <div className="mt-[50px] w-1/2 max-sm:mx-auto max-sm:mt-[80px] max-sm:w-full max-sm:px-[15px] sm:border-r-2 sm:border-r-white sm:px-[50px] sm:pb-[20px] sm:pt-[17px]">
             <div className="sm:-mt-[13px]">
@@ -151,10 +158,10 @@ export default function Body(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className="developer-section-container mx-auto px-2.5 lg:w-[73.125rem]">
+      <div className="developer-section-container mx-auto px-2.5 lg:w-[73.125rem]" id="developer-section">
         <DeveloperSection activeTopicId={activeTopicId} setActiveTopicId={setActiveTopicId} />
       </div>
-      <div className="story-section-container">
+      <div className="story-section-container" id="story-section">
         <StorySection />
       </div>
     </div>
@@ -261,7 +268,21 @@ function DeveloperSection({
     { id: 1, name: "Binary Tree" },
     { id: 2, name: "Fibonacci" },
   ];
-  // const [activeId, setActiveId] = useState<number>(1);
+  const editorRef = useRef<HTMLDivElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    });
+    if (editorRef.current) {
+      observer.observe(editorRef.current);
+    }
+  }, []);
+  const [showEditor, setShowEditor] = useState(false);
+  useEffect(() => {
+    if (!showEditor) setShowEditor(isIntersecting);
+  }, [isIntersecting, showEditor]);
+
   return (
     <div className="mx-auto mt-20  w-[83.3333%]  pt-3">
       <div className="flex w-full flex-col items-center">
@@ -273,8 +294,10 @@ function DeveloperSection({
         </p>
       </div>
       <div className="playground-demo mt-[1.875rem] flex w-full">
-        <div className="editor w-[calc(100%-12.5rem)] overflow-hidden rounded-[0.313rem] border-[1px] border-[#dddddd] bg-[#ecf0f1]">
-          <EditorDemo topic={listData[activeTopicId].name} />
+        <div
+          className="editor w-[calc(100%-12.5rem)] overflow-hidden rounded-[0.313rem] border-[1px] border-[#dddddd] bg-[#ecf0f1]"
+          ref={editorRef}>
+          {showEditor ? <EditorDemo topic={listData[activeTopicId].name} /> : <Spinner />}
         </div>
         <div className="list font-NimbusSans ml-5 w-[12.5rem] text-sm font-normal">
           <ul className="w-full">
@@ -302,79 +325,6 @@ function DeveloperSection({
             <FontAwesomeIcon className="pt-1" icon={faChevronRight} width={5} />
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-type Language = "c++" | "java" | "python";
-function EditorDemo({ topic }: { topic: string }): JSX.Element {
-  const [language, setLanguage] = useState<Language>("c++");
-  const [code, setCode] = useState("");
-  const languages: Language[] = ["c++", "java", "python"];
-
-  const fetchCode = async (): Promise<void> => {
-    try {
-      const topicPath = topic.toLowerCase().replace(" ", "-");
-      const res = await fetch(`api/templates/${topicPath}/${encodeURIComponent(language)}`);
-      const data = (await res.json()) as { code: string };
-      setCode(data.code);
-    } catch (e) {
-      if (e instanceof Error) setCode(`// ${e.message}`);
-    }
-  };
-  useEffect(() => {
-    void fetchCode();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- no need to add fetchCode
-  }, [topic, language]);
-
-  return (
-    <div className="editor w-full bg-white">
-      <div className="toolbar flex w-full items-center justify-between bg-[#ecf0f1] px-2.5 pt-2.5">
-        <div className="flex overflow-hidden rounded-t border-[1px] border-b-0 border-[#dddddd] text-[0.813rem]">
-          {languages.map((lang, idx) => {
-            return (
-              <button
-                className={`h-9 min-w-[3.438rem] border-b-2 border-t-2 px-[0.313rem] py-1.5 text-center capitalize ${
-                  language === lang
-                    ? "border-b-white border-t-[#1da09c] bg-white "
-                    : "border-b-[#dddddd] border-t-transparent hover:bg-[#fafafa] hover:text-[#333]"
-                } 
-                ${idx > 0 ? "border-l-2 border-r-[#dddddd]" : ""}
-                `}
-                key={lang}
-                onClick={() => {
-                  setLanguage(lang);
-                }}
-                type="button">
-                {lang}
-              </button>
-            );
-          })}
-        </div>
-        <div className="mb-auto flex text-[0.813rem]">
-          <button
-            className="mr-1.5 flex h-[1.875rem] items-center rounded border-[1px] border-[#dddd] bg-white px-2 hover:border-[#adadad] hover:bg-[#e6e6e6] hover:text-[#333]"
-            type="button">
-            <Image alt="paste icon" height={13} src="/paste-icon.svg" width={13} />
-            <span className="mt-1">&nbsp; Copy</span>
-          </button>
-          <button
-            className="mr-1.5 flex h-[1.875rem]  items-center rounded border-[1px] border-[#4cae4c] bg-[#5cb85c] px-2 text-white hover:border-[#398439] hover:bg-[#449d44]"
-            type="button">
-            <FontAwesomeIcon className="my-auto" height={13} icon={faPlayCircle} width={13} />
-            <span className="my-1 mt-2">&nbsp; Run</span>
-          </button>
-          <button
-            className="flex h-[1.875rem] items-center rounded border-[1px] border-black bg-black px-2 text-white hover:bg-[#464646]"
-            type="button">
-            <Image alt="playground icon" height={14} src="/leetcode-playground.png" width={14} />
-            <span className="mt-1">&nbsp; Playground</span>
-          </button>
-        </div>
-      </div>
-      <div className="editor mb-[0.0625rem] h-[25rem] w-full">
-        <EditorPlayground code={code} language={language} setCode={setCode} />
       </div>
     </div>
   );

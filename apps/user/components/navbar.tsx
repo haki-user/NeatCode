@@ -7,14 +7,15 @@ interface NavbarItemProps {
   text: string;
   isOrange?: boolean;
   isLast?: boolean;
+  prefetch?: boolean;
 }
 
-function NavbarItem({ text, href, isOrange, isLast }: NavbarItemProps): JSX.Element {
+function NavbarItem({ text, href, isOrange, isLast, prefetch=true }: NavbarItemProps): JSX.Element {
   return (
-    <a
-      className={isLast ? "mr-0" : "mr-[25px]"}
-      href={href}
-      style={{ textDecoration: "none", outline: "none", letterSpacing: "0em" }}>
+    <Link className={`${isLast ? "mr-0" : "mr-[25px]"}`} 
+     href={href}
+     prefetch={prefetch}
+     >
       <span
         className={`font-NimbusSans border-1 rounded-full border-solid border-transparent 
         px-[15px] pb-[10px] pt-2 text-[15px] tracking-normal ${
@@ -24,7 +25,7 @@ function NavbarItem({ text, href, isOrange, isLast }: NavbarItemProps): JSX.Elem
         } transition-all duration-[400ms] ease-in-out`}>
         {text}
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -45,9 +46,9 @@ export default function Navbar(): JSX.Element {
       <div className="nav-right h-10">
         <div className="nav-menu m-2 text-sm transition-all duration-[400ms] ">
           <NavbarItem href="/premium" isOrange text="Premium" />
-          <NavbarItem href="/explore" text="Explore" />
-          <NavbarItem href="/product" text="Product" />
-          <NavbarItem href="/developer" text="Developer" />
+          <NavbarItem href="#explore-section" text="Explore" />
+          <NavbarItem href="#product-section" text="Product" />
+          <NavbarItem href="#developer-section" prefetch={false} text="Developer" />
           <NavbarItem href="/signin" isLast text="Sign in" />
         </div>
       </div>
