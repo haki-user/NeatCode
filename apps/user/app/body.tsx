@@ -12,8 +12,10 @@ import {
   faBuilding,
   faChevronRight,
   faCode,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import Image from "next/image";
 import { Spinner } from "../components/spinner";
 
 const EditorDemo = dynamic(() => import("../components/editor-demo").then((module) => module.EditorDemo), {
@@ -158,10 +160,10 @@ export default function Body(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className="developer-section-container mx-auto px-2.5 lg:w-[73.125rem]" id="developer-section">
+      <div className="developer-section-container mt-7 " id="developer-section">
         <DeveloperSection activeTopicId={activeTopicId} setActiveTopicId={setActiveTopicId} />
       </div>
-      <div className="story-section-container" id="story-section">
+      <div className="story-section-container mt-32 bg-white" id="story-section">
         <StorySection />
       </div>
     </div>
@@ -284,45 +286,68 @@ function DeveloperSection({
   }, [isIntersecting, showEditor]);
 
   return (
-    <div className="mx-auto mt-20  w-[83.3333%]  pt-3">
-      <div className="flex w-full flex-col items-center">
-        <CustomIcons icon={faCode} v="v1" />
-        <h2 className="font-NimbusSans mb-5 mt-2.5 text-[1.375rem] font-medium text-[#1da09c]">Developer</h2>
-        <p className="m-auto max-w-[37.5rem] text-center text-[0.9375rem] font-normal leading-[1.9rem] tracking-normal opacity-30">
-          We now support 14 popular coding languages. At our core, NeatCode is about developers. Our powerful
-          development tools such as Playground help you test, debug and even write your own projects online.
-        </p>
-      </div>
-      <div className="playground-demo mt-[1.875rem] flex w-full">
-        <div
-          className="editor w-[calc(100%-12.5rem)] overflow-hidden rounded-[0.313rem] border-[1px] border-[#dddddd] bg-[#ecf0f1]"
-          ref={editorRef}>
-          {showEditor ? <EditorDemo topic={listData[activeTopicId].name} /> : <Spinner />}
+    <div className="mx-auto px-4 md:w-[60.5rem] lg:w-[73.125rem]">
+      <div className="mx-auto mt-12  w-full sm:w-[45rem] md:w-[83.33333%]">
+        <div className="flex w-full flex-col items-center">
+          <div className="scale-[0.7]">
+            <CustomIcons icon={faCode} v="v1" />
+          </div>
+          <h2 className="font-NimbusSans mb-5 mt-2.5 text-[1.375rem] font-medium text-[#1da09c]">
+            Developer
+          </h2>
+          <p className="m-auto max-w-[37.5rem] text-center text-[0.9375rem] font-normal leading-[1.9rem] tracking-normal opacity-30">
+            We now support 14 popular coding languages. At our core, NeatCode is about developers. Our
+            powerful development tools such as Playground help you test, debug and even write your own
+            projects online.
+          </p>
         </div>
-        <div className="list font-NimbusSans ml-5 w-[12.5rem] text-sm font-normal">
-          <ul className="w-full">
+        <div className="mb-5 mt-8 sm:hidden">
+          <select
+            className="h-8 w-full rounded-md border-none bg-white px-4 text-sm text-[#555555] shadow-md outline-none"
+            onChange={(e) => {
+              setActiveTopicId(parseInt(e.target.value));
+            }}
+            value={activeTopicId}>
             {listData.map((topic) => {
               return (
-                <button
-                  className={`h-[2.625rem] w-full px-2.5 py-[0.688rem] text-left ${
-                    activeTopicId === topic.id
-                      ? "rounded-[0.313rem] bg-white text-[#1da09c] shadow"
-                      : "text-[#1890ff] hover:text-[#3fbbff]"
-                  } `}
-                  key={topic.id}
-                  onClick={() => {
-                    setActiveTopicId(topic.id);
-                  }}
-                  type="button">
-                  <FontAwesomeIcon className="pt-1" icon={faCode} width={15} />
-                  &nbsp;{topic.name}
-                </button>
+                <option className="" key={topic.id} value={topic.id}>
+                  {topic.name}
+                </option>
               );
             })}
-          </ul>
-          <div className="mt-2.5 w-full cursor-pointer border-t-[1px] border-[#dddddd] px-2.5 py-5 text-[#1890ff] hover:text-[#3fbbff]">
-            Create Playground &nbsp;
-            <FontAwesomeIcon className="pt-1" icon={faChevronRight} width={5} />
+          </select>
+        </div>
+        <div className="playground-demo flex w-full sm:mt-5">
+          <div
+            className="editor w-full overflow-hidden rounded-[0.313rem] border-[1px] border-[#dddddd] bg-[#ecf0f1] max-sm:w-full"
+            ref={editorRef}>
+            {showEditor ? <EditorDemo topic={listData[activeTopicId].name} /> : <Spinner />}
+          </div>
+          <div className="list font-NimbusSans invisible ml-5 w-[12.5rem] text-sm font-normal max-sm:hidden max-sm:w-0 sm:visible">
+            <ul className="w-full">
+              {listData.map((topic) => {
+                return (
+                  <button
+                    className={`h-[2.625rem] w-full px-2.5 py-[0.688rem] text-left ${
+                      activeTopicId === topic.id
+                        ? "rounded-[0.313rem] bg-white text-[#1da09c] shadow"
+                        : "text-[#1890ff] hover:text-[#3fbbff]"
+                    } `}
+                    key={topic.id}
+                    onClick={() => {
+                      setActiveTopicId(topic.id);
+                    }}
+                    type="button">
+                    <FontAwesomeIcon className="pt-1" icon={faCode} width={15} />
+                    &nbsp;{topic.name}
+                  </button>
+                );
+              })}
+            </ul>
+            <div className="mt-2.5 w-full cursor-pointer border-t-[1px] border-[#dddddd] px-2.5 py-5 text-[#1890ff] hover:text-[#3fbbff]">
+              Create Playground &nbsp;
+              <FontAwesomeIcon className="pt-1" icon={faChevronRight} width={5} />
+            </div>
           </div>
         </div>
       </div>
@@ -331,5 +356,93 @@ function DeveloperSection({
 }
 
 function StorySection(): JSX.Element {
-  return <div>Story</div>;
+  const companyLogos = [
+    { name: "Facebook", link: "/images/facebook.svg" },
+    { name: "Leap Motion", link: "/images/leap-motion.svg" },
+    { name: "Apple", link: "/images/apple.svg" },
+    { name: "Squarespace", link: "/images/squarespace.svg" },
+    { name: "Jet", link: "/images/jet.svg" },
+    { name: "Intel", link: "/images/intel.svg" },
+    { name: "Amazon", link: "/images/amazon.svg" },
+    { name: "Bank of America", link: "/images/bank-of-america.svg" },
+    { name: "Pinterest", link: "/images/pinterest.svg" },
+    { name: "Cisco", link: "/images/cisco.svg" },
+    { name: "Stripe", link: "/images/stripe.svg" },
+  ];
+  return (
+    <div className="story-inner sm:[750px] relative -top-[2.75rem] mx-auto  md:w-[970px] lg:w-[1170px]">
+      <div className="story-content mt-20 flex flex-col items-center text-center ">
+        <div className="mx-auto">
+          <div className="scale-[0.7]">
+            <div className="h-24 w-24">
+              <div className="relative mx-auto h-[87px] w-[56px]">
+                <div
+                  className={`absolute h-[87px] w-[56px] rounded-[0.625rem] bg-gradient-to-br from-[#f4511e]
+                  to-[#b71c1c]`}
+                />
+                <div
+                  className={`absolute h-[87px] w-[56px] rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br
+                  from-[#f4511e] to-[#b71c1c]`}
+                />
+                <div
+                  className={`"absolute h-[87px] w-[56px] -rotate-[60deg] rounded-[0.625rem] bg-gradient-to-br
+                   from-[#f4511e] to-[#b71c1c]`}
+                />
+                <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-[53px] w-[53px] rounded-full bg-white text-center">
+                  <Image alt="sf" className="mt-[0px]" height={52} src="/sf.png" width={52} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mb-5 mt-2.5 text-xl text-[#b71c1c]">
+          <h1 className="">
+            Made with &nbsp;
+            <FontAwesomeIcon icon={faHeart} /> &nbsp; in SF
+          </h1>
+        </div>
+        <div className="para">
+          <p className="mx-auto max-w-[37.5rem] text-sm leading-[1.9em] tracking-[0.03em] text-[#000000a6] opacity-50">
+            At LeetCode, our mission is to help you improve yourself and land your dream job. We have a
+            sizable repository of interview resources for many companies. In the past few years, our users
+            have landed jobs at top companies around the world.
+          </p>
+        </div>
+        <div>
+          <div className="mx-5 my-10 px-4">
+            <div className="icons relative flex flex-wrap items-center justify-center gap-5 py-5">
+              {companyLogos.map((company) => {
+                return (
+                  <div className="relative h-10 w-28" key={company.name}>
+                    <Image
+                      alt={company.name}
+                      className="m-auto opacity-20 mix-blend-multiply brightness-0"
+                      fill
+                      src={company.link}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="hire px-4 pb-14">
+            <div className="">
+              <p className="mx-auto max-w-[37.5rem] border-t-[1px] border-[#dddddd] px-2 pt-20 text-[#000000a6] opacity-50">
+                If you are passionate about tackling some of the most interesting problems around, we would
+                love to hear from you.
+              </p>
+            </div>
+            <div>
+              <Link className="" href="/join">
+                <p className="mt-[15px] flex items-center justify-center text-[0.9375rem] font-normal leading-[1.813rem] text-[#1890ff] transition-all duration-[400ms] sm:-mr-[17px]">
+                  Join Our Team &nbsp;
+                  <FontAwesomeIcon icon={faChevronRight} width={5} />
+                </p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

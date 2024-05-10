@@ -90,6 +90,25 @@ export default function Home(): JSX.Element {
       <div className="body-container relative -mt-[300px]">
         <Body />
       </div>
+      <div className="footer relative -mt-10 border-t-[1px] text-[#808080]">
+        <br />
+        <div className="flex justify-around text-sm">
+          <div>Copyright © 2024 LeetCode</div>
+          <span />
+          <div className="text-[#373737]">
+            {["Help Center", "Jobs", "Bug Bounty", "Students", "Terms", "Privacy Policy"].map((item, idx) => {
+              return (
+                <Link href={item} key={item}>
+                  {item}
+                  {idx < 5 && <span className="mx-[10px]">|</span>}
+                </Link>
+              );
+            })}
+            <span className="pl-5">United States</span>
+          </div>
+        </div>
+      </div>
+      <br />
     </div>
   );
 }
